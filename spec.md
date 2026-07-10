@@ -45,22 +45,27 @@ Pack Meetings should be held no more than once per month. Pack meetings have eve
 
 The Exception is August and September. These months the recruiting events, called SUNs or Sign-Up  Nights, have not yet occured and all the scouts are not here. Den Meeting would do required advancement and the scouts that have not yet signed up would miss requirements, so those meetings should be pack-wide and work on elective activities.
 
+#### Scheduling Considerations
+Fall recruiting creates organized chaos through October, and the district schedules major recruiting events in mid-October, so keep early-fall programming simple. Shorter fall daylight complicates distant campouts, and family attendance drops off from Veterans Day through Christmas. Families re-engage in the spring, which also brings more daylight and more mature, tool-trained scouts — the reason the Pinewood Derby stays in the spring.
+
 ## Committee Meetings
-Committee meetings are one hour meetings the last Thursday of the month at 9pm on Zoom. If that is a holiday or week with no Wednesday meeting then move the committee meeting forward or backward the smallest integer number of weeks needed to make it work.
+Committee meetings are one hour meetings the last Thursday of the month at 9pm on Zoom. If that is a holiday or week with no Wednesday meeting then move the committee meeting forward or backward the smallest integer number of weeks needed to make it work. Committee meetings are always on a non-Wednesday night so they never fall on the same night as a pack or den meeting.
 
 ## Special Events
 
-Special events need not be on Wednesday nights. A list follows.  
-0. A kickoff event. This is typically a party at the end of summer before school starts. There should be a scouting party 
+Special events need not be on Wednesday nights. The pack holds three annual pack campouts (fall, winter, and spring) and attends one district campout each year. A list follows.  
+0. A kickoff / summer recruitment event. This is typically a party at the end of summer before school starts — for example a foam party at the Scout Cabin (noon–4pm) coordinated with a partner troop. The 2026 event is a foam party on Sunday, June 7, noon–4pm at the Scout Cabin with Troop 21. 
 1. Popcorn kickoff party. This is a council event. Scan the council website or gmail for this year's party. The 2025 event was at <https://www.nfcscouting.org/content/130287/Popcorn-Kickoff-Party>
 2.  Frontier Day or similar renamed shooting sports event at Camp Shands. The 2026 version is at <https://www.nfcscouting.org/frontier>
 3.  BALOO Training. An event link is at <https://www.nfcscouting.org/baloomarion>
-4.  Fall Campout. This is traditionally the Friday to Sunday weekend closest to Halloween that does not interfere with trick-or-treat night.
+4.  Fall Campout. This is traditionally the Friday to Sunday weekend closest to Halloween that does not interfere with trick-or-treat night. Keep it close to home with a one-night mandatory / two-night optional format (for example, Troy Springs with a ranger partnership).
 5.  Winter Campout. Pick a weekend and mark it TBD. The committee has to fill in the details.
 6.  BUC TUOCS at Camp Shands or similar Spring Camping event.
 7.  Pinewood Derby. This event occurs on a Saturday and Sunday. Pick the Saturday and Sunday after Valentine's day and move it if needed. It should be at least two weeks before the Five Rivers Pinewood Derby District Event. There should be 2 or 3 Pack Meetings called Build Nights where scouts can work on their cars before the Pinewood Derby.
-8.  Blue & Gold Banquet. This is a Pack Meeting where the AOL Den finished Cub Scouts and Crosses over into Scouts BSA. This should be no later than April. Try to move it as early as practical into March based on how the schedule allows the AOLs to complete all of the mandatory rank requirements along with time for a make-up night.
+8.  Blue & Gold Banquet. This is a Pack Meeting where the AOL Den finished Cub Scouts and Crosses over into Scouts BSA. This should be no later than April. Try to move it as early as practical into March based on how the schedule allows the AOLs to complete all of the mandatory rank requirements along with time for a make-up night. It must fall after the Pinewood Derby so the AOLs complete the Race Time elective (earned at the Derby) before they cross over; do not move it before the Derby.
 9.  Troop Visits. These only apply to the AOL Den. Each AOL Den needs to visit a Scouts BSA Den on their timetable. Worth noting in the calendar details, not the top page, as this needs to be arranged by the AOL Den Leader with the Troops.
+10.  Rain Gutter Regatta. A fall recruitment activity that complements the spring Pinewood Derby. It can be completed in about an hour with minimal tools (foam, pool noodles, wooden skewers) and is simple enough for kindergartners to do independently. Hold it at the fall pack campout or as a standalone event. Materials are available from Troop 125 and James's storage.
+11.  District Campout. Attend one district campout per year. Prefer the winter Medieval Fair campout over the fall Monster Bash, because fall recruiting keeps the pack too busy.
 
 ## Program Details
 Program Details for each Den can be found at 
@@ -73,6 +78,9 @@ Please suggest an Agenda and Location for each Den for each Den meeting. Use the
 4. The Chapel. A medium indoor meeting space.
 5. Upstairs. Classroom in Epworth Hall.
 6. Bethany Room in Bell Hall. Classroom size indoor space.
+
+### Arrow of Light & Troop Integration
+The AOL Den needs two elective adventures (the Pinewood Derby counts as one), must complete one campout (at least one night in their own tent), and must attend a troop activity or open house (troops typically hold open houses in August/September). The AOL Den Leader coordinates summer troop visits (for example with Troop 125); partner troops include 125, 84, and 21. Den chief youth from these troops may lead adventure activities and are expected to be in full Class A uniform.
 
 ## Program Constraints
 1. The Program details have multiple paths to complete each activity and suggested times. Allocate 30-40 minutes of program time per meeting at the most.
