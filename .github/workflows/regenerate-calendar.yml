@@ -1,0 +1,59 @@
+name: Regenerate Pack Calendar
+
+# When a leader edits spec.md on GitHub, Claude reads the updated spec,
+# adjusts the generator if needed, rebuilds "2026-2027 Pack 127 Calendar.docx",
+# and commits the result back. Also runnable manually from the Actions tab.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'spec.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write # allow Claude to commit the regenerated .docx back to the repo
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          # OAuth token from `claude setup-token` (uses your Claude subscription).
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            The file spec.md was just edited. Bring the calendar back in sync
+            with it. spec.md is the source of truth for what the calendar
+            should contain.
+
+            Steps:
+            1. Read spec.md.
+            2. If the schedule data or logic in generator/generate.js (or
+               generator/lib.js) no longer matches spec.md, edit those files so
+               the generator reflects the spec. Do NOT edit spec.md itself.
+            3. Rebuild the document by running: node generator/generate.js
+               This writes "2026-2027 Pack 127 Calendar.docx".
+            4. Commit the regenerated .docx together with any generator source
+               changes you made, then push to the current branch. Use a commit
+               message like "Regenerate calendar from spec.md".
+
+            If spec.md and the generator already agree, still run the generator
+            and commit only if the .docx actually changed.
+          claude_args: |
+            --allowedTools "Read,Edit,Glob,Grep,Bash(node generator/generate.js),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git status:*),Bash(git diff:*)"

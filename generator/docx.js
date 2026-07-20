@@ -160,12 +160,20 @@ function writeDocx(outPath, { title, sections }) {
     fs.writeFileSync(path.join(build, 'word', '_rels', 'document.xml.rels'), DOC_RELS);
     fs.writeFileSync(path.join(build, 'word', 'document.xml'), buildDocumentXml(sections));
 
-    fs.rmSync(outPath, { force: true });
-    const q = (s) => s.replace(/'/g, "''");
-    const psCmd =
-      'Add-Type -AssemblyName System.IO.Compression.FileSystem; ' +
-      `[System.IO.Compression.ZipFile]::CreateFromDirectory('${q(build)}','${q(outPath)}')`;
-    execFileSync('powershell', ['-NoProfile', '-NonInteractive', '-Command', psCmd]);
+    const abs = path.resolve(outPath);
+    fs.rmSync(abs, { force: true });
+    if (process.platform === 'win32') {
+      const q = (s) => s.replace(/'/g, "''");
+      const psCmd =
+        'Add-Type -AssemblyName System.IO.Compression.FileSystem; ' +
+        `[System.IO.Compression.ZipFile]::CreateFromDirectory('${q(build)}','${q(abs)}')`;
+      execFileSync('powershell', ['-NoProfile', '-NonInteractive', '-Command', psCmd]);
+    } else {
+      // Linux/macOS (e.g. GitHub Actions runners): use the `zip` CLI. Zip from
+      // within the build dir so entry paths are relative to the package root,
+      // as the .docx (OOXML) package requires.
+      execFileSync('zip', ['-r', '-X', '-q', abs, '.'], { cwd: build });
+    }
   } finally {
     fs.rmSync(build, { recursive: true, force: true });
   }
