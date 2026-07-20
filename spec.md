@@ -145,7 +145,7 @@ A list follows.
 5. **Winter Campout (district).** The pack's preferred district campout is the
    **Medieval Faire family camp at Camp Shands, February 5-7, 2027** — chosen
    over the fall Monster Bash (Oct 23-25, 2026) because fall recruiting keeps the
-   pack too busy and that weekend is the Bat Festival.
+   pack too busy and that weekend is the Lubee Bat Festival.
 6. **Spring Campout.** A spring camping event at Camp Shands — for example the
    council **Family Camp, April 23-25, 2027** (formerly referred to as BUC TUOCS).
 7. **Pinewood Derby.** Occurs on a Saturday and Sunday. Pick the Saturday and
