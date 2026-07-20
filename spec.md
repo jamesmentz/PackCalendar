@@ -190,7 +190,7 @@ the relevant ones into the calendar; verify dates against
 - **Volunteer Recognition Awards Dinner:** May 1, 2027.
 - **Summer camps:** Cub Day Camp, Twilight Camp, and Aquatics Camp run in June
   (2026 and 2027).
-- **Scout Nights (pro sports):** Jumbo Shrimp & Sharks (summer 2026/2027),
+- **Scout Nights (pro sports):** Jumbo Shrimp & Sharks (summer 2027),
   Jaguars tailgate (fall 2026), Icemen (January 2027).
 
 Recommended recurring pack activities from the IYOS: at least two service
