@@ -18,13 +18,40 @@ jobs:
         with:
           node-version: 20
 
-      - name: Regenerate calendar
-        run: node generator/generate.js
+      # spec.md is prose, so a plain script can't parse it. Instead, run Claude
+      # Code headlessly to reconcile the generator's data/logic with the current
+      # spec, then rebuild the .docx with the deterministic generator below.
+      - name: Sync generator to spec.md and regenerate
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: "--max-turns 40 --model opus"
+          prompt: |
+            spec.md is the single source of truth for the Pack 127 calendar and
+            it has just changed. Reconcile the generator with the current spec,
+            then rebuild the document:
+
+            1. Read spec.md in full and read generator/generate.js.
+            2. generate.js holds ALL schedule data (off weeks; pack/den/committee
+               meetings; special events; Sign-Up Nights; council/district events)
+               and the per-den program recommendations. Edit generate.js (and,
+               only if strictly necessary, generator/lib.js) so that every date,
+               event, label, meeting rule, and program recommendation agrees with
+               spec.md. Do NOT modify generator/docx.js — the .docx writer is
+               stable and correct and needs no changes.
+            3. Run `node generator/generate.js` to regenerate the .docx.
+            4. Do NOT run git add/commit/push and do NOT open a pull request; a
+               later workflow step commits the result. Just leave the edited
+               source files and the regenerated .docx in the working tree.
+
+            Be faithful to spec.md and to generator/DATA_SOURCES.md conventions;
+            do not invent dates the spec does not support. See CLAUDE.md for the
+            full architecture and regeneration contract.
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "2026-2027 Pack 127 Calendar.docx"
-          git diff --quiet --cached || git commit -m "Auto-generated calendar"
+          git add -A
+          git diff --quiet --cached || git commit -m "Auto-regenerate calendar from spec.md"
           git push
