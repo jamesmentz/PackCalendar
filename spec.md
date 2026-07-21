@@ -44,7 +44,7 @@ A few inputs must be refreshed by a human before each year's calendar is generat
   - Month and day on the same line: **Mar 2** Pack Meeting (Cabin)
 - If an event needs to wrap onto another line for the description to be
   meaningful, just do it.
-- Always put the word POPCORN in all caps when it appears in the docx. Make a final pass after everything else to make sure this word is capitalized.  
+- Always put the word POPCORN in all caps when it appears in the docx. Make a final pass after everything else to make sure this word is capitalized.
 
 ## Event Types
 There are four kinds of events:
