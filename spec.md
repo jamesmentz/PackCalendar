@@ -15,7 +15,7 @@ A few inputs must be refreshed by a human before each year's calendar is generat
 - **ACPS school calendar** — used to find off weeks (holidays/closures). See
   <https://www.alachuaschools.net/o/acps/page/calendars>. Confirm the first and
   last student days and all breaks for the target school year.
-- **Council "Ideal Year of Scouting" (IYOS) calendar** — the North Florida
+- **Council "Ideal Year of Scouting" (IYOS) calendar** — the North Florida  
   Council publishes this each year as an **image-only PDF**, so a human must
   download it, run OCR on it, and update the copy in this repository so its
   dates can be read. The current OCR'd copy is
@@ -44,7 +44,6 @@ A few inputs must be refreshed by a human before each year's calendar is generat
   - Month and day on the same line: **Mar 2** Pack Meeting (Cabin)
 - If an event needs to wrap onto another line for the description to be
   meaningful, just do it.
-- Always put the word POPCORN in all caps when it appears in the docx. Make a final pass after everything else to make sure this word is capitalized.
 
 ## Event Types
 There are four kinds of events:
@@ -248,3 +247,4 @@ Class A uniform.
 6. Do the Webelos Chef's Knife adventure. It should happen in the spring.
 7. Bears should do the Whittling and Baloo the Builder adventures. Whittling
    should happen in the spring.
+   8. Do not scherdulke anything for Valentine's Day weekend or Mother's Day weekend. Mark these weekends as MOTHER'S DAY WEEKEND, NO SCOUTS and VALENTINES WEEKEND, no scouts, in all caps.
