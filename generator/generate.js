@@ -322,6 +322,17 @@ function buildProgramBlocks(denMeetingDates) {
 }
 
 // ---------------------------------------------------------------------------
+// Final pass: per spec.md, the word POPCORN must always appear in all caps in
+// the docx. Runs over the already-assembled paragraph XML (a plain string per
+// block) and upper-cases every whole-word occurrence, regardless of how it was
+// spelled in the data above. "POPCORN" contains no XML-special characters and
+// the token never appears in an OOXML tag/attribute name, so a whole-word,
+// case-insensitive replace on the block strings is safe.
+function capitalizePopcorn(blocks) {
+  return blocks.map((b) => b.replace(/\bpopcorn\b/gi, 'POPCORN'));
+}
+
+// ---------------------------------------------------------------------------
 function main() {
   const wednesdays = buildWednesdayEvents();
   const committee = buildCommitteeEvents();
@@ -349,9 +360,9 @@ function main() {
   writeDocx(OUT, {
     title: TITLE,
     sections: [
-      { blocks: titleBlocks, numCols: 1, type: 'continuous' },
-      { blocks: calendarBlocks, numCols: 2, type: 'continuous' },
-      { blocks: programBlocks, numCols: 1, type: 'nextPage' },
+      { blocks: capitalizePopcorn(titleBlocks), numCols: 1, type: 'continuous' },
+      { blocks: capitalizePopcorn(calendarBlocks), numCols: 2, type: 'continuous' },
+      { blocks: capitalizePopcorn(programBlocks), numCols: 1, type: 'nextPage' },
     ],
   });
   console.log('Wrote', OUT);
