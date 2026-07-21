@@ -31,9 +31,19 @@ When `spec.md` changes:
      `classifyWednesday`.
    - `buildCommitteeEvents` (last-Thursday rule + holiday-week moves).
    - `buildSpecialEvents` (campouts, council/district events, Sign-Up Nights).
+     Add a `verify: '...'` field to any event whose date you could not confirm;
+     that pushes it onto the bottom-of-document "Issues — Unverified Dates" list.
+   - `buildConfigIssues` (unverified config dates — ACPS start/last day, the
+     Veterans Day OFF assumption, the January return, TBD dates) — also feeds the
+     Issues list.
    - `DENS`, `DEN_PLANS`, and `buildProgramBlocks` (program recommendations).
    Edit `generator/lib.js` only if a change genuinely needs new rendering/date
    logic.
+   Verify every date you can against its authoritative source before adding a
+   `verify` note; the remaining unconfirmed dates become the Issues list. Do not
+   hand-write a weekday or weekend range that disagrees with the real calendar —
+   `assertDateLabels` fails the build on any weekday/start-date mismatch, because
+   day-of-week and calendar arithmetic are known and must always be correct.
 3. **Do not modify `generator/docx.js`** — the minimal OOXML `.docx` writer is
    stable and correct. It should never need changes to satisfy a spec edit.
 4. Run `node generator/generate.js` to rebuild the `.docx`.

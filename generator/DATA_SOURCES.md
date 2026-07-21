@@ -2,8 +2,15 @@
 
 The generator (`generator/generate.js`) builds the calendar from data hard-coded
 in that file. This document records where each piece of data came from and the
-judgment calls made where the spec was silent. **Verify the flagged items before
-distributing the calendar.**
+judgment calls made where the spec was silent.
+
+**Every specific date is an example until re-confirmed.** The dates below are
+carried over from prior years, the example calendar, or the Ideal Year of
+Scouting pattern. Before distributing a calendar, re-verify the actual fall 2026
+dates (ACPS first day + fall council/district events) and spring/summer 2027
+dates (ACPS spring break & last day + spring/summer council/district events)
+against the authoritative sources. A date showing the correct year is not proof
+it is current — **verify every flagged item, and treat the rest as examples.**
 
 ## School calendar (ACPS 2026-2027)
 Source: Alachua County Public Schools approved 2026-2027 calendar
@@ -48,7 +55,7 @@ via floridaschoolcalendar.com and heynori.com search results, July 2026).
 | Cubmaster & Den Leader Specific Training | Sat Sep 26, 2026 | IYOS |
 | Rain Gutter Regatta | Sat Oct 17, 2026 | held at the Fall Campout per spec (Sep 26 is now the leader-training date) |
 | Williams & Lake Forest SUNs | Wed Sep 30, 2026, 6:30pm | user-provided |
-| Fall Campout | Fri–Sun Oct 16–18, 2026 | closest-to-Halloween rule, avoiding trick-or-treat AND the Bat Festival (Oct 24); aligns with council Spookoree |
+| Fall Campout | Fri–Sun Oct 16–18, 2026 | two-weekends-before-Halloween rule (Halloween is Sat Oct 31, 2026) so families can do other Halloween activities; also clears the Bat Festival weekend (Oct 24) and aligns with council Spookoree |
 | Lubee Florida Bat Festival | Sat Oct 24, 2026 | lubee.org/flbatfestival — **no pack events that weekend** |
 | BALOO Training | Sat–Sun Nov 7–8, 2026 | IYOS (also May 7–8, 2027) |
 | Cub Winter Wonderland | Dec 11–13, 2026 | IYOS (optional) |
@@ -89,6 +96,18 @@ The per-den, per-meeting agendas are a suggested plan, sequenced so outdoor/
 fitness adventures fall in the daylight windows and tool/cooking adventures use
 the Cabin / Fellowship Hall. Arrow of Light work is front-loaded into Oct–Jan so
 it finishes before the Feb 24 crossover. Adjust freely — these are recommendations.
+
+## How the generator handles verification
+- **Issues list.** Any special event carrying a `verify: '...'` note, plus the
+  entries from `buildConfigIssues` (ACPS start/last day, the Veterans Day OFF
+  assumption, the January return, and the TBD Parker SUN), are rendered as an
+  **"Issues — Unverified Dates"** list at the bottom of the `.docx`. Confirm each
+  before distributing, then drop the `verify` note once a date is verified.
+- **Date/weekday correctness is enforced, not verified.** `assertDateLabels`
+  runs during generation and throws (failing the build) if any label's weekday
+  or start day disagrees with the real calendar. So the Issues list is only ever
+  about *whether an event happens on a date*, never about *which weekday a date
+  is* — that is computed and guaranteed.
 
 ## Regenerating
 ```

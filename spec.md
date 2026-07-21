@@ -9,8 +9,50 @@ example on the first page of
 The calendar being generated now is for the **2026-2027** school year and the
 following summer.
 
+## The dates in this spec are examples — verify them before generating
+**Every specific calendar date in this document is an illustrative EXAMPLE.**
+The dates are carried over from a prior year, from the example calendar linked
+above, or from a typical council pattern. They show the *shape* of the year, not
+confirmed facts. Copying a prior year's date forward without re-checking it is
+exactly what produces a calendar full of errors, so before generating you MUST
+look up and confirm the real dates for the target year:
+
+- **Fall 2026** — the ACPS first student day and every fall holiday/closure, and
+  all fall council/district dates (the popcorn kickoff, Frontier Shooting Day,
+  BALOO, fall family camps, and district recruiting events).
+- **Spring & summer 2027** — the ACPS spring break and last student day, and all
+  spring/summer council/district dates (family camps, the district and council
+  Pinewood Derbies, the Camp Card sale, the awards dinner, and summer camps).
+
+Confirm each date against the authoritative sources listed in **Yearly
+Maintenance** below. Where a real date cannot be confirmed, mark it TBD/TBA
+rather than guessing. Treat any year shown inline (e.g., a "2026" or "2027" in a
+date) as a placeholder to re-derive, not as proof the date is current.
+
+### Two rules for dates
+
+1. **Do the best-effort verification, then list what's left.** When
+   regenerating, verify every date you can against its authoritative source
+   (ACPS calendar, `nfcscouting.org/calendar`, the IYOS PDF, user-provided
+   dates). Any date that cannot be confirmed — externally-scheduled council or
+   district events, assumed school closures, TBD dates — must appear in an
+   **"Issues — Unverified Dates"** list at the **bottom of the calendar**, one
+   line per date, saying what to confirm and where. This is the visible
+   to-do list a human works through before distributing the calendar.
+2. **Day-of-week and calendar arithmetic are absolute — the calendar is known.**
+   Which weekday a date falls on, and which Friday-to-Sunday a weekend is, are
+   deterministic facts of the Gregorian calendar. They must always be computed
+   correctly and must never appear in the Issues list. Whenever a date is
+   written with its weekday or a weekend range (e.g., "Frontier Shooting Day
+   (Sat)" or "Fall Campout, Oct 16-18"), the weekday and day numbers must match
+   the real calendar exactly. The generator enforces this: it fails the build if
+   any label's weekday or start day disagrees with the actual date, so a wrong
+   weekday can never ship.
+
 ## Yearly Maintenance
-A few inputs must be refreshed by a human before each year's calendar is generated:
+A few inputs must be refreshed by a human before each year's calendar is
+generated. None of the example dates in this spec should be trusted until these
+inputs have been refreshed and the dates below re-confirmed against them:
 
 - **ACPS school calendar** — used to find off weeks (holidays/closures). See
   <https://www.alachuaschools.net/o/acps/page/calendars>. Confirm the first and
@@ -44,6 +86,11 @@ A few inputs must be refreshed by a human before each year's calendar is generat
   - Month and day on the same line: **Mar 2** Pack Meeting (Cabin)
 - If an event needs to wrap onto another line for the description to be
   meaningful, just do it.
+- End the document with an **"Issues — Unverified Dates"** list (see "Two rules
+  for dates" above): every date the generator could not confirm, sorted by date,
+  each with what to verify and where. Dates that are computed from a rule (every
+  Wednesday meeting, the last-Thursday committee meetings, the campout weekend,
+  the Pinewood Derby weekend) are known-correct and do not belong on this list.
 
 ## Event Types
 There are four kinds of events:
@@ -136,12 +183,15 @@ A list follows.
 3. **BALOO Training** (adult leaders). Council options for this cycle are
    **November 7-8, 2026** and **May 7-8, 2027**
    (<https://www.nfcscouting.org/baloomarion>).
-4. **Fall Campout.** Traditionally the Friday-to-Sunday weekend closest to
-   Halloween that does not interfere with trick-or-treat night. For 2026-2027,
-   also avoid the Lubee Bat Festival weekend (Oct 24, 2026); the weekend of
-   **October 16-18, 2026** works and aligns with the council's Spookoree family
-   camp. Keep it close to home with a one-night-mandatory / two-night-optional
-   format (for example, Troy Springs with a ranger partnership).
+4. **Fall Campout.** Schedule it **two weekends before Halloween** so families
+   are free to do other Halloween activities (trick-or-treat, festivals, the
+   district's Halloween family camp) on the weekends nearer the holiday. For
+   2026-2027, Halloween is Saturday, October 31, so two weekends before is the
+   Friday-to-Sunday of **October 16-18, 2026** (example — recompute for the
+   target year). That weekend also clears the Lubee Bat Festival weekend
+   (Oct 24, 2026) and aligns with the council's Spookoree family camp. Keep it
+   close to home with a one-night-mandatory / two-night-optional format (for
+   example, Troy Springs with a ranger partnership).
 5. **Winter Campout (district).** The pack's preferred district campout is the
    **Medieval Faire family camp at Camp Shands, February 5-7, 2027** — chosen
    over the fall Monster Bash (Oct 23-25, 2026) because fall recruiting keeps the

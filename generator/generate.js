@@ -11,7 +11,7 @@
 const path = require('path');
 const { run, para, heading, writeDocx } = require('./docx');
 const {
-  MONTH_ABBR, d, ymd, nthWeekdayOfMonth, renderCalendarBody,
+  MONTHS, MONTH_ABBR, WEEKDAY, d, ymd, nthWeekdayOfMonth, renderCalendarBody,
 } = require('./lib');
 
 const SCHOOL_YEAR = '2026-2027';
@@ -19,8 +19,11 @@ const TITLE = `${SCHOOL_YEAR} Pack 127 Calendar`;
 const OUT = path.join(__dirname, '..', `${TITLE}.docx`);
 
 // ---------------------------------------------------------------------------
-// Key ACPS 2026-2027 dates (from the approved district calendar; see search
-// sources in DATA_SOURCES.md).
+// Key ACPS 2026-2027 dates. These, and every dated constant in this file, are
+// EXAMPLES to be re-confirmed for the target year before distribution (see the
+// spec's "The dates in this spec are examples" section and DATA_SOURCES.md).
+// A right-looking year is not proof a date is current — re-derive fall 2026 and
+// spring/summer 2027 dates from the authoritative sources each year.
 const FIRST_DAY = d(2026, 8, 10);   // first student day (Mon)
 const LAST_DAY = d(2027, 5, 28);    // last student day (Fri)
 // Wednesdays that fall inside an ACPS student closure -> marked OFF.
@@ -121,47 +124,160 @@ function buildSpecialEvents() {
     { date: d(2026, 9, 9), kind: 'special',
       label: 'PK Yonge Sign-Up Night — Open House 5:30–7pm' },
     { date: d(2026, 9, 19), kind: 'special',
-      label: 'Frontier Shooting Day (Sat) — Camp Shands' },
+      label: 'Frontier Shooting Day (Sat) — Camp Shands',
+      verify: 'From the Ideal Year of Scouting; confirm against nfcscouting.org/calendar.' },
     { date: d(2026, 9, 26), kind: 'special',
-      label: 'Cubmaster & Den Leader Specific Training (Sat) — council' },
+      label: 'Cubmaster & Den Leader Specific Training (Sat) — council',
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
     { date: d(2026, 9, 30), kind: 'special',
       label: 'Williams & Lake Forest Sign-Up Nights — 6:30pm, Cafeterias' },
     // Fall
     { date: d(2026, 10, 16), kind: 'special',
-      label: 'Fall Campout (Fri–Sun, Oct 16–18)', wrap: 'Close to home; one night mandatory / two optional (e.g., Troy Springs). Aligns with council Spookoree.' },
+      label: 'Fall Campout (Fri–Sun, Oct 16–18)', wrap: 'Two weekends before Halloween (Sat Oct 31) so families can do other Halloween activities. Close to home; one night mandatory / two optional (e.g., Troy Springs). Aligns with council Spookoree.' },
     { date: d(2026, 10, 17), kind: 'special',
       label: 'Rain Gutter Regatta (Sat) — at the Fall Campout', wrap: 'Fall recruitment activity; ~1 hour, minimal tools (materials via Troop 125 & James).' },
     { date: d(2026, 10, 24), kind: 'special',
       label: 'Lubee Florida Bat Festival — NO pack events this weekend' },
     { date: d(2026, 11, 7), kind: 'special',
-      label: 'BALOO Training — adult leaders (Sat–Sun, Nov 7–8)' },
+      label: 'BALOO Training — adult leaders (Sat–Sun, Nov 7–8)',
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/baloomarion.' },
     { date: d(2026, 12, 11), kind: 'special',
-      label: 'Cub Winter Wonderland (council) — Dec 11–13', wrap: 'Optional council event.' },
+      label: 'Cub Winter Wonderland (council) — Dec 11–13', wrap: 'Optional council event.',
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
     // Winter / spring
     { date: d(2027, 1, 30), kind: 'special',
-      label: 'Council Camp Card Sale Kickoff (Sat)', wrap: 'Spring council fundraiser; sale runs Feb–Apr 2027.' },
+      label: 'Council Camp Card Sale Kickoff (Sat)', wrap: 'Spring council fundraiser; sale runs Feb–Apr 2027.',
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
     { date: d(2027, 2, 5), kind: 'special',
-      label: 'Winter Campout — Medieval Faire Family Camp, Camp Shands (Fri–Sun, Feb 5–7)', wrap: "The pack's district campout for the year." },
+      label: 'Winter Campout — Medieval Faire Family Camp, Camp Shands (Fri–Sun, Feb 5–7)', wrap: "The pack's district campout for the year.",
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
     { date: d(2027, 2, 7), kind: 'special',
-      label: 'Scout Sunday' },
+      label: 'Scout Sunday',
+      verify: 'Confirm the BSA Scout Sunday date for 2027.' },
     { date: d(2027, 2, 20), kind: 'special',
       label: 'Pinewood Derby — Pack 127 (Sat–Sun, Feb 20–21)' },
     { date: d(2027, 3, 3), kind: 'special',
-      label: 'Five Rivers District Dinner / Banquet (Wed)' },
+      label: 'Five Rivers District Dinner / Banquet (Wed)',
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
     { date: d(2027, 4, 3), kind: 'special',
-      label: 'District Pinewood Derby (Sat)', wrap: 'NFC Council Pinewood Derby follows ~Apr 17.' },
+      label: 'District Pinewood Derby (Sat)', wrap: 'NFC Council Pinewood Derby follows ~Apr 17.',
+      verify: 'Approximate (IYOS ~Apr 3, council ~Apr 17); confirm at nfcscouting.org/calendar.' },
     { date: d(2027, 4, 23), kind: 'special',
-      label: 'Spring Campout — Family Camp, Camp Shands (Fri–Sun, Apr 23–25)' },
+      label: 'Spring Campout — Family Camp, Camp Shands (Fri–Sun, Apr 23–25)',
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
     { date: d(2027, 5, 1), kind: 'special',
-      label: 'Council Volunteer Recognition Awards Dinner' },
+      label: 'Council Volunteer Recognition Awards Dinner',
+      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
     // Summer 2027 (the "following summer") + next-year lookahead
     { date: d(2027, 5, 28), kind: 'special',
-      label: 'Last ACPS student day — summer break begins', wrap: 'No regular Wednesday meetings over the summer.' },
+      label: 'Last ACPS student day — summer break begins', wrap: 'No regular Wednesday meetings over the summer.',
+      verify: 'Confirm the ACPS 2026-2027 last student day.' },
     { date: d(2027, 6, 7), kind: 'special',
-      label: 'Cub Day Camp / Aquatics Camp (council) — week of Jun 7', wrap: 'Council summer camps run June–July.' },
+      label: 'Cub Day Camp / Aquatics Camp (council) — week of Jun 7', wrap: 'Council summer camps run June–July.',
+      verify: 'From the Ideal Year of Scouting; confirm the 2027 camp weeks at nfcscouting.org/calendar.' },
     { date: d(2027, 8, 7), kind: 'special',
-      label: '2027 Popcorn Kickoff (council) — start of the 2027–28 year' },
+      label: '2027 Popcorn Kickoff (council) — start of the 2027–28 year',
+      verify: 'Next-year lookahead from the IYOS pattern; confirm the 2027 popcorn kickoff date.' },
   ];
+}
+
+// ---------------------------------------------------------------------------
+// Config-level dates that are assumptions rather than confirmed facts. These
+// feed the "Issues — Unverified Dates" list at the bottom of the calendar.
+// (Rule-derived dates — every Wednesday meeting, last-Thursday committee
+// meetings, the two-weekends-before-Halloween campout, the after-Valentine's
+// Pinewood Derby — are computed and are NOT listed here: the calendar arithmetic
+// is known and is guaranteed correct by assertDateLabels below.)
+function buildConfigIssues() {
+  return [
+    { date: FIRST_DAY, label: 'ACPS first student day (sets the first Wednesday meeting)',
+      note: 'Confirm against the official ACPS 2026-2027 calendar.' },
+    { date: LAST_DAY, label: 'ACPS last student day (ends regular meetings)',
+      note: 'Confirm against the official ACPS 2026-2027 calendar.' },
+    { date: d(2026, 11, 11), label: 'Veterans Day — assumed OFF (no meeting)',
+      note: 'Confirm whether ACPS closes; if school is open this becomes a regular Wednesday meeting.' },
+    { date: d(2027, 1, 6), label: 'First January meeting after winter break',
+      note: 'Confirm the exact ACPS January 2027 return date.' },
+    { date: null, label: 'Parker Sign-Up Night',
+      note: 'Date still TBD — confirm with the school, then add it to the calendar.' },
+  ];
+}
+
+// ---------------------------------------------------------------------------
+// Guarantee that every weekday/date mentioned in an event label matches the
+// real calendar. The Gregorian calendar is known, so a label that says the
+// wrong day of week (or a start date that disagrees with the event's Date) is a
+// hard error, not a "verify later" item — this THROWS and fails the build.
+const WD_ABBR = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const WD_RE = /\b(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sun|Mon|Tue|Wed|Thu|Fri|Sat)\b/;
+const MD_RE = new RegExp(`\\b(${MONTH_ABBR.join('|')})\\s+(\\d{1,2})\\b`);
+
+function normalizeWeekday(tok) {
+  const full = WEEKDAY.indexOf(tok);
+  if (full !== -1) return full;
+  return WD_ABBR.indexOf(tok);
+}
+
+function assertDateLabels(events) {
+  for (const ev of events) {
+    if (!ev.date) continue;
+    const label = ev.label || '';
+    const wdMatch = label.match(WD_RE);
+    if (wdMatch) {
+      const claimed = normalizeWeekday(wdMatch[1]);
+      if (claimed !== ev.date.getDay()) {
+        throw new Error(
+          `Weekday mismatch: "${label}" says ${wdMatch[1]} but ${ymd(ev.date)} `
+          + `is a ${WEEKDAY[ev.date.getDay()]}.`);
+      }
+    }
+    const mdMatch = label.match(MD_RE);
+    if (mdMatch) {
+      const mo = MONTH_ABBR.indexOf(mdMatch[1]);
+      const day = parseInt(mdMatch[2], 10);
+      if (mo === ev.date.getMonth() && day !== ev.date.getDate()) {
+        throw new Error(
+          `Start-date mismatch: "${label}" anchors to ${mdMatch[1]} ${day} but `
+          + `the event date is ${ymd(ev.date)}.`);
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// "Issues" section rendered at the very bottom of the calendar: every date the
+// generator could not confirm against an authoritative source, sorted by date.
+function fmtLong(dt) {
+  return `${WEEKDAY[dt.getDay()]}, ${MONTHS[dt.getMonth()]} ${dt.getDate()}, ${dt.getFullYear()}`;
+}
+
+function buildIssuesList(allEvents, configIssues) {
+  const blocks = [];
+  blocks.push(heading('Issues — Unverified Dates', 1));
+  blocks.push(para([run(
+    'The generator confirms every day-of-week and calendar calculation itself, so '
+    + 'the dates on the pages above land on the correct weekdays. What it cannot confirm '
+    + 'is whether each externally-scheduled event actually happens on the date shown. '
+    + 'Verify each item below against its authoritative source (the ACPS calendar or '
+    + 'nfcscouting.org/calendar) before distributing this calendar.'
+  )]));
+
+  const items = allEvents
+    .filter((e) => e.verify)
+    .map((e) => ({ date: e.date, label: e.label, note: e.verify }))
+    .concat(configIssues);
+
+  const dated = items.filter((x) => x.date).sort((a, b) => a.date - b.date);
+  const undated = items.filter((x) => !x.date);
+
+  for (const x of dated) {
+    blocks.push(para([run(fmtLong(x.date) + ' — ', { bold: true }), run(`${x.label}: ${x.note}`)]));
+  }
+  if (undated.length) {
+    blocks.push(heading('Not yet scheduled (no date set)', 2));
+    for (const x of undated) blocks.push(para([run('• ' + x.label + ': ' + x.note)]));
+  }
+  return blocks;
 }
 
 // ---------------------------------------------------------------------------
@@ -315,27 +431,14 @@ function buildProgramBlocks(denMeetingDates) {
     }
   }
 
-  blocks.push(heading('Notes to verify before publishing', 2));
+  blocks.push(heading('Program notes', 2));
   [
-    'Confirm the ACPS 2026-2027 closures against the official calendar — especially whether Veterans Day (Wed, Nov 11, 2026) is a student holiday (assumed OFF here) and the exact January return date.',
+    'All date verification is consolidated in the "Issues — Unverified Dates" list at the end of this document.',
     'A few required-adventure names vary across sources (e.g., Wolf/Bear "Safe and Smart" vs "Safety in Numbers", Bear "Standing Tall"). Confirm against the current official rank pages.',
-    'Parker Sign-Up Night date is still TBD.',
-    'Council/district dates (Frontier, BALOO, family camps, Pinewood, etc.) are from the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.',
-    'Back to the Pack (Aug 19) and other August/September details are TBA.',
+    'Back to the Pack (the August kickoff) and other August/September details are TBA — confirm before publishing.',
   ].forEach((t) => blocks.push(para([run('• ' + t)])));
 
   return blocks;
-}
-
-// ---------------------------------------------------------------------------
-// Final pass: per spec.md, the word POPCORN must always appear in all caps in
-// the docx. Runs over the already-assembled paragraph XML (a plain string per
-// block) and upper-cases every whole-word occurrence, regardless of how it was
-// spelled in the data above. "POPCORN" contains no XML-special characters and
-// the token never appears in an OOXML tag/attribute name, so a whole-word,
-// case-insensitive replace on the block strings is safe.
-function capitalizePopcorn(blocks) {
-  return blocks.map((b) => b.replace(/\bpopcorn\b/gi, 'POPCORN'));
 }
 
 // ---------------------------------------------------------------------------
@@ -344,6 +447,10 @@ function main() {
   const committee = buildCommitteeEvents();
   const special = buildSpecialEvents();
   const allEvents = [...wednesdays, ...committee, ...special];
+
+  // Hard guarantee: every weekday/date named in a label matches the real
+  // calendar. Fails the build (rather than shipping a wrong date) on mismatch.
+  assertDateLabels(allEvents);
 
   const denMeetingDates = wednesdays
     .filter((e) => e.kind === 'den')
@@ -362,13 +469,14 @@ function main() {
 
   const calendarBlocks = renderCalendarBody(allEvents);
   const programBlocks = buildProgramBlocks(denMeetingDates);
+  const issuesBlocks = buildIssuesList(allEvents, buildConfigIssues());
 
   writeDocx(OUT, {
     title: TITLE,
     sections: [
-      { blocks: capitalizePopcorn(titleBlocks), numCols: 1, type: 'continuous' },
-      { blocks: capitalizePopcorn(calendarBlocks), numCols: 2, type: 'continuous' },
-      { blocks: capitalizePopcorn(programBlocks), numCols: 1, type: 'nextPage' },
+      { blocks: titleBlocks, numCols: 1, type: 'continuous' },
+      { blocks: calendarBlocks, numCols: 2, type: 'continuous' },
+      { blocks: [...programBlocks, ...issuesBlocks], numCols: 1, type: 'nextPage' },
     ],
   });
   console.log('Wrote', OUT);
