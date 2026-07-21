@@ -19,20 +19,20 @@ const TITLE = `${SCHOOL_YEAR} Pack 127 Calendar`;
 const OUT = path.join(__dirname, '..', `${TITLE}.docx`);
 
 // ---------------------------------------------------------------------------
-// Key ACPS 2026-2027 dates. These, and every dated constant in this file, are
-// EXAMPLES to be re-confirmed for the target year before distribution (see the
-// spec's "The dates in this spec are examples" section and DATA_SOURCES.md).
-// A right-looking year is not proof a date is current — re-derive fall 2026 and
-// spring/summer 2027 dates from the authoritative sources each year.
-const FIRST_DAY = d(2026, 8, 10);   // first student day (Mon)
-const LAST_DAY = d(2027, 5, 28);    // last student day (Fri)
+// Key ACPS 2026-2027 dates. Verified against the official ACPS 2026-27 calendar
+// PDF (Jul 2026). When rolling this file to a future year, treat these as
+// EXAMPLES to re-confirm — a right-looking year is not proof a date is current.
+const FIRST_DAY = d(2026, 8, 10);   // first student day (Mon) — verified ACPS
+const LAST_DAY = d(2027, 5, 28);    // last student day (Fri) — verified ACPS
 // Wednesdays that fall inside an ACPS student closure -> marked OFF.
+// All verified against the official ACPS 2026-27 calendar; no other Wednesday
+// closures exist in the school year.
 const OFF_WEDNESDAYS = {
-  '2026-11-11': 'Veterans Day',       // Wed; ACPS usually observes it — verify
+  '2026-11-11': 'Veterans Day',       // verified: ACPS holiday (school closed)
   '2026-11-25': 'Thanksgiving break',
-  '2026-12-23': 'Winter break',
+  '2026-12-23': 'Winter break',       // winter break Dec 21 – Jan 1; students return Tue Jan 5
   '2026-12-30': 'Winter break',
-  '2027-03-17': 'Spring break',
+  '2027-03-17': 'Spring break',       // spring break Mar 15–19
 };
 // Daylight for the 6pm playground (Roper Park): available before the clocks
 // fall back (Sun Nov 1, 2026) and again after they spring forward (Sun Mar 14,
@@ -124,60 +124,49 @@ function buildSpecialEvents() {
     { date: d(2026, 9, 9), kind: 'special',
       label: 'PK Yonge Sign-Up Night — Open House 5:30–7pm' },
     { date: d(2026, 9, 19), kind: 'special',
-      label: 'Frontier Shooting Day (Sat) — Camp Shands',
-      verify: 'From the Ideal Year of Scouting; confirm against nfcscouting.org/calendar.' },
+      label: 'Frontier Shooting Day (Sat) — Camp Shands' },  // verified: nfcscouting.org/frontier
     { date: d(2026, 9, 26), kind: 'special',
       label: 'Cubmaster & Den Leader Specific Training (Sat) — council',
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
+      verify: 'Not found on the council’s live training calendar (Jul 2026); confirm the 2026 date at nfcscouting.org/training.' },
     { date: d(2026, 9, 30), kind: 'special',
       label: 'Williams & Lake Forest Sign-Up Nights — 6:30pm, Cafeterias' },
     // Fall
     { date: d(2026, 10, 16), kind: 'special',
-      label: 'Fall Campout (Fri–Sun, Oct 16–18)', wrap: 'Two weekends before Halloween (Sat Oct 31) so families can do other Halloween activities. Close to home; one night mandatory / two optional (e.g., Troy Springs). Aligns with council Spookoree.' },
+      label: 'Fall Campout (Fri–Sun, Oct 16–18)', wrap: 'Two weekends before Halloween (Sat Oct 31) so families can do other Halloween activities. Close to home; one night mandatory / two optional (e.g., Troy Springs). Aligns with council Spookoree (Oct 16–18).' },
     { date: d(2026, 10, 17), kind: 'special',
       label: 'Rain Gutter Regatta (Sat) — at the Fall Campout', wrap: 'Fall recruitment activity; ~1 hour, minimal tools (materials via Troop 125 & James).' },
     { date: d(2026, 10, 24), kind: 'special',
-      label: 'Lubee Florida Bat Festival — NO pack events this weekend' },
+      label: 'Lubee Florida Bat Festival — NO pack events this weekend' },  // verified: lubee.org/flbatfestival
     { date: d(2026, 11, 7), kind: 'special',
-      label: 'BALOO Training — adult leaders (Sat–Sun, Nov 7–8)',
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/baloomarion.' },
+      label: 'BALOO Training — adult leaders (Sat–Sun, Nov 7–8)' },  // verified: nfcscouting.org/baloo-stjohns (spring option May 7–8, 2027)
     { date: d(2026, 12, 11), kind: 'special',
-      label: 'Cub Winter Wonderland (council) — Dec 11–13', wrap: 'Optional council event.',
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
+      label: 'Cub Winter Wonderland (council) — Dec 11–13', wrap: 'Optional council event.' },  // verified: nfcscouting.org/familycamps
     // Winter / spring
     { date: d(2027, 1, 30), kind: 'special',
-      label: 'Council Camp Card Sale Kickoff (Sat)', wrap: 'Spring council fundraiser; sale runs Feb–Apr 2027.',
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
+      label: 'Council Camp Card Sale Kickoff (Sat)', wrap: 'Spring council fundraiser; sale runs Feb–Apr 2027.' },  // verified: NFC IYOS 2026-2027
     { date: d(2027, 2, 5), kind: 'special',
-      label: 'Winter Campout — Medieval Faire Family Camp, Camp Shands (Fri–Sun, Feb 5–7)', wrap: "The pack's district campout for the year.",
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
+      label: 'Winter Campout — Medieval Faire Family Camp, Camp Shands (Fri–Sun, Feb 5–7)', wrap: "The pack's district campout for the year." },  // verified: NFC IYOS 2026-2027
     { date: d(2027, 2, 7), kind: 'special',
-      label: 'Scout Sunday',
-      verify: 'Confirm the BSA Scout Sunday date for 2027.' },
+      label: 'Scout Sunday' },  // verified: scouting.org + NFC IYOS 2026-2027
     { date: d(2027, 2, 20), kind: 'special',
       label: 'Pinewood Derby — Pack 127 (Sat–Sun, Feb 20–21)' },
     { date: d(2027, 3, 3), kind: 'special',
-      label: 'Five Rivers District Dinner / Banquet (Wed)',
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
+      label: 'Five Rivers District Dinner / Banquet (Wed)' },  // verified: NFC IYOS 2026-2027
     { date: d(2027, 4, 3), kind: 'special',
       label: 'District Pinewood Derby (Sat)', wrap: 'NFC Council Pinewood Derby follows ~Apr 17.',
-      verify: 'Approximate (IYOS ~Apr 3, council ~Apr 17); confirm at nfcscouting.org/calendar.' },
+      verify: 'IYOS shows district Pinewood Derbies on Apr 3, 2027 but does not explicitly name Five Rivers; confirm the Five Rivers date at nfcscouting.org/calendar.' },
     { date: d(2027, 4, 23), kind: 'special',
-      label: 'Spring Campout — Family Camp, Camp Shands (Fri–Sun, Apr 23–25)',
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
+      label: 'Spring Campout — Family Camp, Camp Shands (Fri–Sun, Apr 23–25)' },  // verified: NFC IYOS 2026-2027
     { date: d(2027, 5, 1), kind: 'special',
-      label: 'Council Volunteer Recognition Awards Dinner',
-      verify: 'From the Ideal Year of Scouting; confirm at nfcscouting.org/calendar.' },
+      label: 'Council Volunteer Recognition Awards Dinner' },  // verified: NFC IYOS 2026-2027
     // Summer 2027 (the "following summer") + next-year lookahead
     { date: d(2027, 5, 28), kind: 'special',
-      label: 'Last ACPS student day — summer break begins', wrap: 'No regular Wednesday meetings over the summer.',
-      verify: 'Confirm the ACPS 2026-2027 last student day.' },
+      label: 'Last ACPS student day — summer break begins', wrap: 'No regular Wednesday meetings over the summer.' },  // verified: ACPS 2026-2027 calendar
     { date: d(2027, 6, 7), kind: 'special',
-      label: 'Cub Day Camp / Aquatics Camp (council) — week of Jun 7', wrap: 'Council summer camps run June–July.',
-      verify: 'From the Ideal Year of Scouting; confirm the 2027 camp weeks at nfcscouting.org/calendar.' },
+      label: 'Cub Day Camp (council) — week of Jun 7 (Jun 7–11)', wrap: 'Five Rivers Cub Day Camp; Aquatics Camp Wk 1 follows Jun 14–18.' },  // verified: NFC IYOS 2026-2027
     { date: d(2027, 8, 7), kind: 'special',
       label: '2027 Popcorn Kickoff (council) — start of the 2027–28 year',
-      verify: 'Next-year lookahead from the IYOS pattern; confirm the 2027 popcorn kickoff date.' },
+      verify: 'Next-year lookahead; the 2027 popcorn kickoff date is not yet published — confirm.' },
   ];
 }
 
@@ -189,15 +178,10 @@ function buildSpecialEvents() {
 // Pinewood Derby — are computed and are NOT listed here: the calendar arithmetic
 // is known and is guaranteed correct by assertDateLabels below.)
 function buildConfigIssues() {
+  // ACPS 2026-2027 dates (first/last day, Veterans Day OFF, Thanksgiving, winter
+  // & spring break, the Jan 6 return) were verified against the official ACPS
+  // 26-27 calendar PDF and are no longer listed here. Parker SUN remains TBD.
   return [
-    { date: FIRST_DAY, label: 'ACPS first student day (sets the first Wednesday meeting)',
-      note: 'Confirm against the official ACPS 2026-2027 calendar.' },
-    { date: LAST_DAY, label: 'ACPS last student day (ends regular meetings)',
-      note: 'Confirm against the official ACPS 2026-2027 calendar.' },
-    { date: d(2026, 11, 11), label: 'Veterans Day — assumed OFF (no meeting)',
-      note: 'Confirm whether ACPS closes; if school is open this becomes a regular Wednesday meeting.' },
-    { date: d(2027, 1, 6), label: 'First January meeting after winter break',
-      note: 'Confirm the exact ACPS January 2027 return date.' },
     { date: null, label: 'Parker Sign-Up Night',
       note: 'Date still TBD — confirm with the school, then add it to the calendar.' },
   ];

@@ -227,9 +227,11 @@ the relevant ones into the calendar; verify dates against
 - **Camp Card sale:** February-April 2027 (kickoff Jan 30, 2027).
 - **Frontier Shooting Day:** September 19, 2026.
 - **Cubmaster & Den Leader Specific training:** September 26, 2026.
-- **Family Camps:** Spookoree Oct 16-18, 2026; Monster Bash Oct 23-25, 2026
-  (skip — Bat Festival weekend); Medieval Faire Feb 5-7, 2027; Family Camp
-  (Shands) Apr 23-25, 2027.
+- **Family Camps:** Spookoree Oct 16-18, 2026 (verified); Monster Bash Oct 23-25,
+  2026 (skip — Bat Festival weekend) — **note: the "Monster Bash" name could not
+  be verified against the council (Jul 2026); the district Halloween camp is
+  Spookoree, so confirm this before relying on it**; Medieval Faire Feb 5-7, 2027;
+  Family Camp (Shands) Apr 23-25, 2027.
 - **BALOO (adult training):** Nov 7-8, 2026 and May 7-8, 2027.
 - **Cub Winter Wonderland:** December 11-13, 2026.
 - **Scout Sunday:** February 7, 2027.

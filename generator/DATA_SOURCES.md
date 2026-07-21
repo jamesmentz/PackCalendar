@@ -12,19 +12,23 @@ dates (ACPS spring break & last day + spring/summer council/district events)
 against the authoritative sources. A date showing the correct year is not proof
 it is current — **verify every flagged item, and treat the rest as examples.**
 
-## School calendar (ACPS 2026-2027)
-Source: Alachua County Public Schools approved 2026-2027 calendar
-(<https://www.alachuaschools.net/o/acps/page/calendars>; key dates cross-checked
-via floridaschoolcalendar.com and heynori.com search results, July 2026).
+## School calendar (ACPS 2026-2027) — verified Jul 2026
+Source: the official Alachua County Public Schools approved **2026-27 10-Month
+School Calendar** PDF (linked from
+<https://www.alachuaschools.net/o/acps/page/calendars>), cross-checked against
+educounty.net and floridaschoolcalendar.com. All items below **CONFIRMED**:
 
-- First student day: Mon Aug 10, 2026. Last student day: Fri May 28, 2027.
-- Wednesdays marked **OFF**: Nov 11 (Veterans Day — **assumed OFF, verify**),
-  Nov 25 (Thanksgiving), Dec 23 & Dec 30 (winter break, Dec 21–Jan 1), Mar 17
-  (spring break, Mar 15–19).
-- **To verify:** whether Veterans Day (Wed Nov 11, 2026) is a student holiday
-  (ACPS observed it the prior year, so it is assumed OFF here), and the exact
-  January 2027 return date (winter break ends Jan 1; students assumed back the
-  week of Jan 4, first Wednesday meeting Jan 6).
+- First student day: **Mon Aug 10, 2026** ✓. Last student day: **Fri May 28,
+  2027** ✓.
+- Wednesdays marked **OFF** (all confirmed as ACPS closures): Nov 11 (Veterans
+  Day holiday ✓), Nov 25 (Thanksgiving — whole week off ✓), Dec 23 & Dec 30
+  (winter break Dec 21–Jan 1 ✓), Mar 17 (spring break Mar 15–19 ✓).
+- **No other Wednesday closures** exist in the school year — verified against the
+  full calendar. (Other holidays fall on non-Wednesdays: Labor Day Mon Sep 7,
+  MLK Mon Jan 18, Presidents' Day Mon Feb 15, Memorial Day Mon May 31, plus
+  several Friday/Monday flex days — none affect Wednesday meetings.)
+- January return: students return **Tue Jan 5, 2027** (Mon Jan 4 is a flex-day
+  holiday), so the first January Wednesday meeting **Jan 6** is valid ✓.
 - Daylight (for the 6pm playground): clocks fall back **Sun Nov 1, 2026** and
   spring forward **Sun Mar 14, 2027** — the outdoor-scheduling windows.
 
@@ -45,34 +49,43 @@ via floridaschoolcalendar.com and heynori.com search results, July 2026).
   (Nov 19) and Dec back two weeks (Dec 17) to stay in-month in a week that has a
   Wednesday meeting.
 
-## Special events
-| Event | Date used | Basis |
+## Special events — verified Jul 2026
+Basis column shows the verification verdict (✓ confirmed / ⚠ unconfirmed) and source.
+
+| Event | Date used | Basis (verified Jul 2026) |
 |---|---|---|
-| Council Popcorn Kickoff | Sat Aug 1, 2026 | nfcscouting.org/2026popcorn (verified) |
+| Council Popcorn Kickoff | Sat Aug 1, 2026 | ✓ nfcscouting.org/2026popcorn (10am–2pm, SJRB Orange Park) |
 | Littlewood SUN | Wed Aug 26, 2026, 6:30pm | user-provided |
 | PK Yonge SUN / Open House | Wed Sep 9, 2026, 5:30–7pm | user-provided |
-| Frontier Shooting Day | Sat Sep 19, 2026 | Ideal Year of Scouting (IYOS) |
-| Cubmaster & Den Leader Specific Training | Sat Sep 26, 2026 | IYOS |
+| Frontier Shooting Day | Sat Sep 19, 2026 | ✓ nfcscouting.org/frontier (venue not stated on page) |
+| Cubmaster & Den Leader Specific Training | Sat Sep 26, 2026 | ⚠ **UNCONFIRMED** — not on the council's live training calendar; may be IYOS-only. On the Issues list. |
 | Rain Gutter Regatta | Sat Oct 17, 2026 | held at the Fall Campout per spec (Sep 26 is now the leader-training date) |
 | Williams & Lake Forest SUNs | Wed Sep 30, 2026, 6:30pm | user-provided |
-| Fall Campout | Fri–Sun Oct 16–18, 2026 | two-weekends-before-Halloween rule (Halloween is Sat Oct 31, 2026) so families can do other Halloween activities; also clears the Bat Festival weekend (Oct 24) and aligns with council Spookoree |
-| Lubee Florida Bat Festival | Sat Oct 24, 2026 | lubee.org/flbatfestival — **no pack events that weekend** |
-| BALOO Training | Sat–Sun Nov 7–8, 2026 | IYOS (also May 7–8, 2027) |
-| Cub Winter Wonderland | Dec 11–13, 2026 | IYOS (optional) |
-| Camp Card Sale Kickoff | Sat Jan 30, 2027 | IYOS (spring council fundraiser, Feb–Apr) |
-| Winter Campout (district) | Fri–Sun Feb 5–7, 2027 | IYOS Medieval Faire family camp — the pack's chosen district campout |
-| Scout Sunday | Sun Feb 7, 2027 | IYOS |
+| Fall Campout | Fri–Sun Oct 16–18, 2026 | two-weekends-before-Halloween rule (Halloween Sat Oct 31, 2026); clears the Bat Festival weekend (Oct 24) and aligns with council Spookoree (✓ Oct 16–18, nfcscouting.org) |
+| Lubee Florida Bat Festival | Sat Oct 24, 2026 | ✓ lubee.org/flbatfestival — **no pack events that weekend** |
+| BALOO Training | Sat–Sun Nov 7–8, 2026 | ✓ nfcscouting.org/baloo-stjohns (spring option ✓ May 7–8, 2027) |
+| Cub Winter Wonderland | Dec 11–13, 2026 | ✓ nfcscouting.org/familycamps (optional) |
+| Camp Card Sale Kickoff | Sat Jan 30, 2027 | ✓ NFC IYOS 2026-2027 (sale Feb–Apr) |
+| Winter Campout (district) | Fri–Sun Feb 5–7, 2027 | ✓ NFC IYOS — Medieval Faire family camp, Camp Shands |
+| Scout Sunday | Sun Feb 7, 2027 | ✓ scouting.org + NFC IYOS |
 | Pinewood Derby (Pack) | Sat–Sun Feb 20–21, 2027 | Sat/Sun after Valentine's Day (Sun Feb 14) |
-| Five Rivers District Dinner | Wed Mar 3, 2027 | IYOS (District Dinner/Banquet, Feb–Mar 2027) |
-| District Pinewood Derby | Sat Apr 3, 2027 | IYOS (NFC Council PWD ~Apr 17) |
-| Spring Campout | Fri–Sun Apr 23–25, 2027 | IYOS Family Camp, Camp Shands |
-| Volunteer Recognition Dinner | Sat May 1, 2027 | IYOS |
-| Last student day / summer | Fri May 28, 2027 | ACPS |
-| Cub Day/Aquatics Camp | week of Jun 7, 2027 | IYOS |
-| 2027 Popcorn Kickoff | Sat Aug 7, 2027 | IYOS (next-year lookahead) |
+| Five Rivers District Dinner | Wed Mar 3, 2027 | ✓ NFC IYOS (first week of Mar) |
+| District Pinewood Derby | Sat Apr 3, 2027 | ✓ NFC IYOS date, but ⚠ Five Rivers not explicitly named for Apr 3 (council PWD ✓ Apr 17). On the Issues list. |
+| Spring Campout | Fri–Sun Apr 23–25, 2027 | ✓ NFC IYOS Family Camp, Camp Shands ("BUC TUOCS" name dropped) |
+| Volunteer Recognition Dinner | Sat May 1, 2027 | ✓ NFC IYOS |
+| Last student day / summer | Fri May 28, 2027 | ✓ ACPS 2026-2027 calendar |
+| Cub Day Camp | week of Jun 7 (Jun 7–11), 2027 | ✓ NFC IYOS (Five Rivers day camp; Aquatics Wk 1 Jun 14–18) |
+| 2027 Popcorn Kickoff | Sat Aug 7, 2027 | ⚠ next-year lookahead, not yet published. On the Issues list. |
 
-Parker SUN date is **TBD** (not on the calendar yet). Troop Visits (AOL only) are
-intentionally **not** on the calendar page — arranged by the AOL Den Leader.
+Parker SUN date is **TBD** (on the Issues list, not the calendar yet). Troop
+Visits (AOL only) are intentionally **not** on the calendar page — arranged by
+the AOL Den Leader.
+
+**"Monster Bash" (Oct 23–25, 2026)** referenced in `spec.md` could **not** be
+verified — no council event by that name was found online; the district Halloween
+family camp is **Spookoree**. Treat the Monster Bash name as suspect and confirm
+against the council before relying on it. (It is not a generator event, so it
+does not affect the calendar output — only the spec's prose rationale.)
 
 ## Ideal Year of Scouting source
 The council's IYOS 2026-2027 PDF
