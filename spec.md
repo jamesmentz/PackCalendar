@@ -44,6 +44,7 @@ A few inputs must be refreshed by a human before each year's calendar is generat
   - Month and day on the same line: **Mar 2** Pack Meeting (Cabin)
 - If an event needs to wrap onto another line for the description to be
   meaningful, just do it.
+  Always put the word POPCORN in all caps.
 
 ## Event Types
 There are four kinds of events:
@@ -247,4 +248,3 @@ Class A uniform.
 6. Do the Webelos Chef's Knife adventure. It should happen in the spring.
 7. Bears should do the Whittling and Baloo the Builder adventures. Whittling
    should happen in the spring.
-8. Do NOT put any activities on Mother's Day weekend and mark that weekend as "Mother's Day. No Activities."
