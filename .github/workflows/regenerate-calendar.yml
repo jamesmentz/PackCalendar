@@ -11,42 +11,46 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
 
-      # spec.md is prose, so a plain script can't parse it. Instead, run Claude
-      # Code headlessly to reconcile the generator's data/logic with the current
-      # spec, then rebuild the .docx with the deterministic generator below.
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      # spec.md is prose, so a plain script can't parse it. Run Claude Code
+      # headlessly (CLI, so it works on push events) to reconcile the generator's
+      # data/logic with the current spec, then the generator rebuilds the .docx.
       - name: Sync generator to spec.md and regenerate
-        uses: anthropics/claude-code-action@v1
-        with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          claude_args: "--max-turns 40 --model opus"
-          prompt: |
-            spec.md is the single source of truth for the Pack 127 calendar and
-            it has just changed. Reconcile the generator with the current spec,
-            then rebuild the document:
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          claude -p "$(cat <<'EOF'
+          spec.md is the single source of truth for the Pack 127 calendar and it
+          has just changed. Reconcile the generator with the current spec, then
+          rebuild the document:
 
-            1. Read spec.md in full and read generator/generate.js.
-            2. generate.js holds ALL schedule data (off weeks; pack/den/committee
-               meetings; special events; Sign-Up Nights; council/district events)
-               and the per-den program recommendations. Edit generate.js (and,
-               only if strictly necessary, generator/lib.js) so that every date,
-               event, label, meeting rule, and program recommendation agrees with
-               spec.md. Do NOT modify generator/docx.js — the .docx writer is
-               stable and correct and needs no changes.
-            3. Run `node generator/generate.js` to regenerate the .docx.
-            4. Do NOT run git add/commit/push and do NOT open a pull request; a
-               later workflow step commits the result. Just leave the edited
-               source files and the regenerated .docx in the working tree.
+          1. Read spec.md in full and read generator/generate.js.
+          2. generate.js holds ALL schedule data (off weeks; pack/den/committee
+             meetings; special events; Sign-Up Nights; council/district events)
+             and the per-den program recommendations. Edit generate.js (and, only
+             if strictly necessary, generator/lib.js) so that every date, event,
+             label, meeting rule, and program recommendation agrees with spec.md.
+             Do NOT modify generator/docx.js — the .docx writer is stable and
+             correct and needs no changes.
+          3. Run 'node generator/generate.js' to regenerate the .docx.
+          4. Do NOT run git add/commit/push and do NOT open a pull request; a
+             later workflow step commits the result. Just leave the edited source
+             files and the regenerated .docx in the working tree.
 
-            Be faithful to spec.md and to generator/DATA_SOURCES.md conventions;
-            do not invent dates the spec does not support. See CLAUDE.md for the
-            full architecture and regeneration contract.
+          Be faithful to spec.md and to generator/DATA_SOURCES.md conventions; do
+          not invent dates the spec does not support. See CLAUDE.md for the full
+          architecture and regeneration contract.
+          EOF
+          )" --permission-mode bypassPermissions --model opus --max-turns 40
 
       - name: Commit changes
         run: |
