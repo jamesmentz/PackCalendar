@@ -45,15 +45,18 @@ via floridaschoolcalendar.com and heynori.com search results, July 2026).
 | Littlewood SUN | Wed Aug 26, 2026, 6:30pm | user-provided |
 | PK Yonge SUN / Open House | Wed Sep 9, 2026, 5:30–7pm | user-provided |
 | Frontier Shooting Day | Sat Sep 19, 2026 | Ideal Year of Scouting (IYOS) |
-| Rain Gutter Regatta | Sat Sep 26, 2026 | fall recruitment activity; date chosen (standalone). **Confirm.** |
+| Cubmaster & Den Leader Specific Training | Sat Sep 26, 2026 | IYOS |
+| Rain Gutter Regatta | Sat Oct 17, 2026 | held at the Fall Campout per spec (Sep 26 is now the leader-training date) |
 | Williams & Lake Forest SUNs | Wed Sep 30, 2026, 6:30pm | user-provided |
 | Fall Campout | Fri–Sun Oct 16–18, 2026 | closest-to-Halloween rule, avoiding trick-or-treat AND the Bat Festival (Oct 24); aligns with council Spookoree |
 | Lubee Florida Bat Festival | Sat Oct 24, 2026 | lubee.org/flbatfestival — **no pack events that weekend** |
 | BALOO Training | Sat–Sun Nov 7–8, 2026 | IYOS (also May 7–8, 2027) |
 | Cub Winter Wonderland | Dec 11–13, 2026 | IYOS (optional) |
+| Camp Card Sale Kickoff | Sat Jan 30, 2027 | IYOS (spring council fundraiser, Feb–Apr) |
 | Winter Campout (district) | Fri–Sun Feb 5–7, 2027 | IYOS Medieval Faire family camp — the pack's chosen district campout |
 | Scout Sunday | Sun Feb 7, 2027 | IYOS |
 | Pinewood Derby (Pack) | Sat–Sun Feb 20–21, 2027 | Sat/Sun after Valentine's Day (Sun Feb 14) |
+| Five Rivers District Dinner | Wed Mar 3, 2027 | IYOS (District Dinner/Banquet, Feb–Mar 2027) |
 | District Pinewood Derby | Sat Apr 3, 2027 | IYOS (NFC Council PWD ~Apr 17) |
 | Spring Campout | Fri–Sun Apr 23–25, 2027 | IYOS Family Camp, Camp Shands |
 | Volunteer Recognition Dinner | Sat May 1, 2027 | IYOS |
