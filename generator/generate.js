@@ -144,9 +144,6 @@ function buildSpecialEvents() {
       label: 'Winter Campout — Medieval Faire Family Camp, Camp Shands (Fri–Sun, Feb 5–7)', wrap: "The pack's district campout for the year." },
     { date: d(2027, 2, 7), kind: 'special',
       label: 'Scout Sunday' },
-    // Valentine's Day weekend (Sun Feb 14, 2027) — no scouting, per spec.
-    { date: d(2027, 2, 13), kind: 'special',
-      label: 'VALENTINES WEEKEND, NO SCOUTS (Feb 13–14)' },
     { date: d(2027, 2, 20), kind: 'special',
       label: 'Pinewood Derby — Pack 127 (Sat–Sun, Feb 20–21)' },
     { date: d(2027, 3, 3), kind: 'special',
@@ -157,9 +154,6 @@ function buildSpecialEvents() {
       label: 'Spring Campout — Family Camp, Camp Shands (Fri–Sun, Apr 23–25)' },
     { date: d(2027, 5, 1), kind: 'special',
       label: 'Council Volunteer Recognition Awards Dinner' },
-    // Mother's Day weekend (Sun May 9, 2027) — no scouting, per spec.
-    { date: d(2027, 5, 8), kind: 'special',
-      label: "MOTHER'S DAY WEEKEND, NO SCOUTS (May 8–9)" },
     // Summer 2027 (the "following summer") + next-year lookahead
     { date: d(2027, 5, 28), kind: 'special',
       label: 'Last ACPS student day — summer break begins', wrap: 'No regular Wednesday meetings over the summer.' },
@@ -281,7 +275,6 @@ function buildProgramBlocks(denMeetingDates) {
     'Arrow of Light earns two electives: Knife Safety (a den meeting) and Race Time (covered by the Pinewood Derby build nights and race in February).',
     'Arrow of Light finishes all required rank work before the Blue & Gold crossover (Feb 24, 2027), leaving a make-up night in the schedule.',
     'Troop Visits apply only to the Arrow of Light den and are arranged directly by the AOL Den Leader with local Scouts BSA troops (125, 84, 21) on their own timetable (not on the top calendar page).',
-    "Nothing is scheduled on Valentine's Day weekend (Feb 13–14, 2027) or Mother's Day weekend (May 8–9, 2027); both are marked NO SCOUTS on the calendar.",
   ].forEach((t) => blocks.push(para([run('• ' + t)])));
 
   blocks.push(heading('Meeting locations', 2));
