@@ -132,7 +132,7 @@ function buildSpecialEvents() {
       label: 'Williams & Lake Forest Sign-Up Nights — 6:30pm, Cafeterias' },
     // Fall
     { date: d(2026, 10, 16), kind: 'special',
-      label: 'Fall Campout (Fri–Sun, Oct 16–18)', wrap: 'Two weekends before Halloween (Sat Oct 31) so families can do other Halloween activities. Close to home; one night mandatory / two optional (e.g., Troy Springs). Aligns with council Spookoree (Oct 16–18).' },
+      label: 'Fall Campout (Fri–Sun, Oct 16–18)', wrap: 'Two weekends before Halloween (Sat Oct 31) so families can do other Halloween activities. Close to home; one night mandatory / two optional (e.g., Troy Springs). Same weekend as the St. Johns/Sabol Spookoree (Oct 16–18).' },
     { date: d(2026, 10, 17), kind: 'special',
       label: 'Rain Gutter Regatta (Sat) — at the Fall Campout', wrap: 'Fall recruitment activity; ~1 hour, minimal tools (materials via Troop 125 & James).' },
     { date: d(2026, 10, 24), kind: 'special',
@@ -182,6 +182,8 @@ function buildConfigIssues() {
   // & spring break, the Jan 6 return) were verified against the official ACPS
   // 26-27 calendar PDF and are no longer listed here. Parker SUN remains TBD.
   return [
+    { date: d(2026, 10, 23), label: 'Five Rivers Spookoree family camp (~Oct 23–25) — the pack SKIPS this',
+      note: 'Confirm the exact Five Rivers/Marion/Bartram Trail Spookoree dates; the pack skips it (Lubee Bat Festival weekend), so it is not a pack calendar event.' },
     { date: null, label: 'Parker Sign-Up Night',
       note: 'Date still TBD — confirm with the school, then add it to the calendar.' },
   ];

@@ -81,11 +81,14 @@ Parker SUN date is **TBD** (on the Issues list, not the calendar yet). Troop
 Visits (AOL only) are intentionally **not** on the calendar page — arranged by
 the AOL Den Leader.
 
-**"Monster Bash" (Oct 23–25, 2026)** referenced in `spec.md` could **not** be
-verified — no council event by that name was found online; the district Halloween
-family camp is **Spookoree**. Treat the Monster Bash name as suspect and confirm
-against the council before relying on it. (It is not a generator event, so it
-does not affect the calendar output — only the spec's prose rationale.)
+**Five Rivers Spookoree (~Oct 23–25, 2026), the camp the pack skips.** This was
+previously mis-named "Monster Bash" in `spec.md`; no council event by that name
+exists. It is the pack's own district Halloween camp (the Five Rivers/Marion/
+Bartram Trail **Spookoree**), distinct from the St. Johns/Sabol Spookoree (Oct
+16–18, verified). Its exact 2026 dates were **not published** at research time
+(the registration page showed "full"), so the ~Oct 23–25 date is unconfirmed —
+it appears on the Issues list. The pack skips it (Lubee Bat Festival weekend), so
+it is not a pack calendar event, only a note in the spec's rationale.
 
 ## Ideal Year of Scouting source
 The council's IYOS 2026-2027 PDF
@@ -127,5 +130,6 @@ it finishes before the Feb 24 crossover. Adjust freely — these are recommendat
 node generator/generate.js
 ```
 Edit the data tables at the top of `generate.js` and re-run to produce an updated
-`2026-2027 Pack 127 Calendar.docx` in the repo root. Requires Node.js and (on
-Windows) PowerShell/.NET for zip packaging — no Word, Python, or npm packages.
+`2026-2027 Pack 127 Calendar.docx` in the repo root. Requires only Node.js —
+`docx.js` writes the ZIP itself and its output is byte-deterministic (no Word,
+Python, npm packages, or external tools; regenerating with no changes is a no-op).

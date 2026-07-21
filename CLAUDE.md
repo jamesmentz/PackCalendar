@@ -70,5 +70,7 @@ should only edit files and run the generator, not run git.
 node generator/generate.js
 ```
 
-Node core only — no npm packages. On Windows, `docx.js` shells out to
-PowerShell/.NET for zip packaging.
+Node core only — no npm packages and no external tools. `docx.js` writes the
+`.docx` ZIP itself, and its output is byte-deterministic across platforms and
+Node versions (so CI regenerating produces no spurious diff when nothing
+substantive changed).

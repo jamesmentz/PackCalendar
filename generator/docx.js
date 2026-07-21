@@ -1,16 +1,16 @@
 // docx.js — minimal, dependency-free OOXML (.docx) writer.
 //
-// Produces a WordprocessingML package and zips it into a .docx using .NET's
-// System.IO.Compression (invoked via PowerShell). No Word, Python, or npm
-// packages required — only Node core + Windows PowerShell/.NET.
+// Produces a WordprocessingML package and zips it into a .docx using a small
+// built-in, fully deterministic ZIP writer (pure Node core — no PowerShell,
+// no `zip` CLI, no npm). Determinism matters: the same input always yields
+// byte-identical output on every platform and Node version, so CI regenerating
+// the calendar produces no spurious diff/commit when nothing substantive changed.
 //
 // The document is a single "continuous" section laid out in two columns, so
 // Word flows body content column-to-column and onto as many pages as needed.
 
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
-const { execFileSync } = require('child_process');
 
 function esc(s) {
   return String(s)
@@ -144,39 +144,108 @@ ${sectPrXml(lastSec.numCols, lastSec.type)}
 </w:document>`;
 }
 
-// Write the package to disk and zip into `outPath` (.docx).
+// --- Deterministic ZIP writer -----------------------------------------------
+// A .docx is just a ZIP of the package parts. We build it by hand so the bytes
+// are reproducible: every entry is STORED (no compression, so output never
+// depends on the bundled zlib version), timestamps are pinned to the ZIP epoch
+// (1980-01-01), entry names use forward slashes, and the entry order is fixed.
+
+const CRC32_TABLE = (() => {
+  const table = new Int32Array(256);
+  for (let n = 0; n < 256; n++) {
+    let c = n;
+    for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+    table[n] = c;
+  }
+  return table;
+})();
+
+function crc32(buf) {
+  let c = ~0;
+  for (let i = 0; i < buf.length; i++) c = CRC32_TABLE[(c ^ buf[i]) & 0xff] ^ (c >>> 8);
+  return (~c) >>> 0;
+}
+
+const DOS_TIME = 0;       // 00:00:00
+const DOS_DATE = 0x0021;  // 1980-01-01 (ZIP epoch)
+
+// entries: [{ name, data: Buffer }] — returns the complete ZIP as a Buffer.
+function buildZip(entries) {
+  const localChunks = [];
+  const centralChunks = [];
+  let offset = 0;
+  for (const { name, data } of entries) {
+    const nameBuf = Buffer.from(name, 'utf8');
+    const crc = crc32(data);
+    const size = data.length;
+
+    const local = Buffer.alloc(30);
+    local.writeUInt32LE(0x04034b50, 0); // local file header signature
+    local.writeUInt16LE(20, 4);         // version needed to extract
+    local.writeUInt16LE(0, 6);          // general purpose bit flag
+    local.writeUInt16LE(0, 8);          // compression method: 0 = stored
+    local.writeUInt16LE(DOS_TIME, 10);
+    local.writeUInt16LE(DOS_DATE, 12);
+    local.writeUInt32LE(crc, 14);
+    local.writeUInt32LE(size, 18);      // compressed size
+    local.writeUInt32LE(size, 22);      // uncompressed size
+    local.writeUInt16LE(nameBuf.length, 26);
+    local.writeUInt16LE(0, 28);         // extra field length
+    localChunks.push(local, nameBuf, data);
+
+    const central = Buffer.alloc(46);
+    central.writeUInt32LE(0x02014b50, 0); // central directory header signature
+    central.writeUInt16LE(20, 4);         // version made by
+    central.writeUInt16LE(20, 6);         // version needed to extract
+    central.writeUInt16LE(0, 8);          // general purpose bit flag
+    central.writeUInt16LE(0, 10);         // compression method
+    central.writeUInt16LE(DOS_TIME, 12);
+    central.writeUInt16LE(DOS_DATE, 14);
+    central.writeUInt32LE(crc, 16);
+    central.writeUInt32LE(size, 20);      // compressed size
+    central.writeUInt32LE(size, 24);      // uncompressed size
+    central.writeUInt16LE(nameBuf.length, 28);
+    central.writeUInt16LE(0, 30);         // extra field length
+    central.writeUInt16LE(0, 32);         // file comment length
+    central.writeUInt16LE(0, 34);         // disk number start
+    central.writeUInt16LE(0, 36);         // internal file attributes
+    central.writeUInt32LE(0, 38);         // external file attributes
+    central.writeUInt32LE(offset, 42);    // relative offset of local header
+    centralChunks.push(central, nameBuf);
+
+    offset += local.length + nameBuf.length + data.length;
+  }
+
+  const localBuf = Buffer.concat(localChunks);
+  const centralBuf = Buffer.concat(centralChunks);
+  const eocd = Buffer.alloc(22);
+  eocd.writeUInt32LE(0x06054b50, 0);          // end of central directory signature
+  eocd.writeUInt16LE(0, 4);                   // number of this disk
+  eocd.writeUInt16LE(0, 6);                   // disk with start of central dir
+  eocd.writeUInt16LE(entries.length, 8);      // central dir records on this disk
+  eocd.writeUInt16LE(entries.length, 10);     // total central dir records
+  eocd.writeUInt32LE(centralBuf.length, 12);  // size of central directory
+  eocd.writeUInt32LE(localBuf.length, 16);    // offset of central directory
+  eocd.writeUInt16LE(0, 20);                  // .zip file comment length
+  return Buffer.concat([localBuf, centralBuf, eocd]);
+}
+
+// Write the package into `outPath` (.docx) as a deterministic ZIP.
 // `sections` is an array of { blocks, numCols, type } (see buildDocumentXml).
 function writeDocx(outPath, { title, sections }) {
-  const build = fs.mkdtempSync(path.join(os.tmpdir(), 'packcal-'));
-  try {
-    fs.mkdirSync(path.join(build, '_rels'));
-    fs.mkdirSync(path.join(build, 'word', '_rels'), { recursive: true });
-    fs.mkdirSync(path.join(build, 'docProps'));
-    fs.writeFileSync(path.join(build, '[Content_Types].xml'), CONTENT_TYPES);
-    fs.writeFileSync(path.join(build, '_rels', '.rels'), ROOT_RELS);
-    fs.writeFileSync(path.join(build, 'docProps', 'core.xml'), coreProps(title));
-    fs.writeFileSync(path.join(build, 'docProps', 'app.xml'), APP_PROPS);
-    fs.writeFileSync(path.join(build, 'word', 'styles.xml'), STYLES);
-    fs.writeFileSync(path.join(build, 'word', '_rels', 'document.xml.rels'), DOC_RELS);
-    fs.writeFileSync(path.join(build, 'word', 'document.xml'), buildDocumentXml(sections));
-
-    const abs = path.resolve(outPath);
-    fs.rmSync(abs, { force: true });
-    if (process.platform === 'win32') {
-      const q = (s) => s.replace(/'/g, "''");
-      const psCmd =
-        'Add-Type -AssemblyName System.IO.Compression.FileSystem; ' +
-        `[System.IO.Compression.ZipFile]::CreateFromDirectory('${q(build)}','${q(abs)}')`;
-      execFileSync('powershell', ['-NoProfile', '-NonInteractive', '-Command', psCmd]);
-    } else {
-      // Linux/macOS (e.g. GitHub Actions runners): use the `zip` CLI. Zip from
-      // within the build dir so entry paths are relative to the package root,
-      // as the .docx (OOXML) package requires.
-      execFileSync('zip', ['-r', '-X', '-q', abs, '.'], { cwd: build });
-    }
-  } finally {
-    fs.rmSync(build, { recursive: true, force: true });
-  }
+  const b = (s) => Buffer.from(s, 'utf8');
+  // Fixed entry order; [Content_Types].xml first per the OOXML convention.
+  const entries = [
+    { name: '[Content_Types].xml', data: b(CONTENT_TYPES) },
+    { name: '_rels/.rels', data: b(ROOT_RELS) },
+    { name: 'docProps/core.xml', data: b(coreProps(title)) },
+    { name: 'docProps/app.xml', data: b(APP_PROPS) },
+    { name: 'word/styles.xml', data: b(STYLES) },
+    { name: 'word/_rels/document.xml.rels', data: b(DOC_RELS) },
+    { name: 'word/document.xml', data: b(buildDocumentXml(sections)) },
+  ];
+  const abs = path.resolve(outPath);
+  fs.writeFileSync(abs, buildZip(entries));
   return outPath;
 }
 

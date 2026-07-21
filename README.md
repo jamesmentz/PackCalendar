@@ -26,8 +26,9 @@ To do the same locally with Claude Code, ask it to "regenerate the calendar from
 spec.md" — it follows the regeneration contract in `CLAUDE.md`.
 
 ## Generator
-`generator/` builds the `.docx` with no external dependencies — only Node.js and
-(on Windows) PowerShell/.NET for zip packaging. No Word, Python, or npm packages.
+`generator/` builds the `.docx` with no external dependencies — only Node.js.
+`docx.js` writes the ZIP itself, deterministically (byte-identical output on
+every platform/Node version). No Word, Python, npm packages, or external tools.
 
 ```
 node generator/generate.js

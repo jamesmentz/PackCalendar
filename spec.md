@@ -130,8 +130,9 @@ activities.
   mature, tool-trained scouts — the reason the Pinewood Derby stays in the spring.
 - **Do not schedule any pack activity on the weekend of the Lubee Florida Bat
   Festival — Saturday, October 24, 2026** (<https://www.lubee.org/flbatfestival>).
-  This is why the fall campout avoids that weekend and the pack skips the
-  district Monster Bash family camp (Oct 23-25, 2026); see Special Events.
+  This is why the fall campout avoids that weekend and the pack skips its own
+  district's Spookoree family camp (the Five Rivers/Marion/Bartram Trail
+  Spookoree, ~Oct 23-25, 2026 — confirm the exact dates); see Special Events.
 
 ## Pack Meetings
 Pack Meetings are held no more than once per month and have everyone together.
@@ -189,13 +190,15 @@ A list follows.
    2026-2027, Halloween is Saturday, October 31, so two weekends before is the
    Friday-to-Sunday of **October 16-18, 2026** (example — recompute for the
    target year). That weekend also clears the Lubee Bat Festival weekend
-   (Oct 24, 2026) and aligns with the council's Spookoree family camp. Keep it
-   close to home with a one-night-mandatory / two-night-optional format (for
-   example, Troy Springs with a ranger partnership).
+   (Oct 24, 2026) and shares the weekend with the St. Johns/Sabol Spookoree
+   family camp (a different district's, Oct 16-18). Keep it close to home with a
+   one-night-mandatory / two-night-optional format (for example, Troy Springs
+   with a ranger partnership).
 5. **Winter Campout (district).** The pack's preferred district campout is the
    **Medieval Faire family camp at Camp Shands, February 5-7, 2027** — chosen
-   over the fall Monster Bash (Oct 23-25, 2026) because fall recruiting keeps the
-   pack too busy and that weekend is the Lubee Bat Festival.
+   over the pack's own district Spookoree (the Five Rivers/Marion/Bartram Trail
+   Spookoree, ~Oct 23-25, 2026 — confirm the exact dates) because fall recruiting
+   keeps the pack too busy and that weekend is the Lubee Bat Festival.
 6. **Spring Campout.** A spring camping event at Camp Shands — for example the
    council **Family Camp, April 23-25, 2027** (formerly referred to as BUC TUOCS).
 7. **Pinewood Derby.** Occurs on a Saturday and Sunday. Pick the Saturday and
@@ -227,11 +230,11 @@ the relevant ones into the calendar; verify dates against
 - **Camp Card sale:** February-April 2027 (kickoff Jan 30, 2027).
 - **Frontier Shooting Day:** September 19, 2026.
 - **Cubmaster & Den Leader Specific training:** September 26, 2026.
-- **Family Camps:** Spookoree Oct 16-18, 2026 (verified); Monster Bash Oct 23-25,
-  2026 (skip — Bat Festival weekend) — **note: the "Monster Bash" name could not
-  be verified against the council (Jul 2026); the district Halloween camp is
-  Spookoree, so confirm this before relying on it**; Medieval Faire Feb 5-7, 2027;
-  Family Camp (Shands) Apr 23-25, 2027.
+- **Family Camps:** Spookoree (St. Johns/Sabol) Oct 16-18, 2026 (verified);
+  Spookoree (Five Rivers/Marion/Bartram Trail — the pack's own district) ~Oct
+  23-25, 2026 (skip — Bat Festival weekend; **confirm the exact Five Rivers
+  Spookoree dates**); Medieval Faire Feb 5-7, 2027; Family Camp (Shands) Apr
+  23-25, 2027.
 - **BALOO (adult training):** Nov 7-8, 2026 and May 7-8, 2027.
 - **Cub Winter Wonderland:** December 11-13, 2026.
 - **Scout Sunday:** February 7, 2027.
