@@ -229,7 +229,6 @@ the relevant ones into the calendar; verify dates against
 - **Popcorn sale:** August-December 2026 (kickoff Aug 1, 2026).
 - **Camp Card sale:** February-April 2027 (kickoff Jan 30, 2027).
 - **Frontier Shooting Day:** September 19, 2026.
-- **Cubmaster & Den Leader Specific training:** September 26, 2026.
 - **Family Camps:** Spookoree (St. Johns/Sabol) Oct 16-18, 2026 (verified);
   Spookoree (Five Rivers/Marion/Bartram Trail — the pack's own district) ~Oct
   23-25, 2026 (skip — Bat Festival weekend; **confirm the exact Five Rivers
@@ -302,6 +301,10 @@ Class A uniform.
 6. Do the Webelos Chef's Knife adventure. It should happen in the spring.
 7. Bears should do the Whittling and Baloo the Builder adventures. Whittling
    should happen in the spring.
+8. No meetings should occur prior to Back to Pack
+9. The Pinewood Derby should be on a Sunday no sooner than the last Sunday in January, as soon as scheduling allows
+10. Pinewood Derby and Blue and Gold should be on days that Fellowhip Hall is available as determined by the word "Fellowhip Hall" not occuring in any of the events on the calendar here: <https://fumcgnv.org/calendar>
+11. Blue and Gold must be at least three weeks after the Pinewood Derby
 
 
    
