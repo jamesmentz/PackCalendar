@@ -302,3 +302,6 @@ Class A uniform.
 6. Do the Webelos Chef's Knife adventure. It should happen in the spring.
 7. Bears should do the Whittling and Baloo the Builder adventures. Whittling
    should happen in the spring.
+
+
+   
