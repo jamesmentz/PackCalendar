@@ -36,15 +36,25 @@ educounty.net and floridaschoolcalendar.com. All items below **CONFIRMED**:
 - Every school-year Wednesday at 6pm is a Pack or Den meeting unless it is a
   Special Event or an OFF week.
 - **Aug & Sep** meetings are pack-wide (elective work) pre-Sign-Up Night; the
-  **Back to the Pack** kickoff is Wed Aug 19, 2026.
+  **Back to the Pack** kickoff is the first school-year Wednesday, **Wed Aug 12,
+  2026**. No meeting precedes it (spec Program Constraint 8), and it also fills
+  the first school Wednesday so no Wednesday in-session is left without a meeting.
 - **Pack Meetings** (≤ 1/month): 1st Wednesday of Oct, Nov, Dec, Jan, Apr; a
   year-end celebration on the last Wednesday of May (May 26). Page 1 shows
   `(FH, 6pm)`.
-- **February** carries three Pinewood Derby "Build Night" pack meetings
-  (Feb 3/10/17) — the spec's explicit exception to once-a-month.
+- **January** carries three Pinewood Derby "Build Night" pack meetings
+  (Jan 13/20/27) — the spec's explicit exception to once-a-month — the three
+  Wednesdays before the derby weekend.
+- **Pinewood Derby**: **Sat–Sun Jan 30–31, 2027**, race on Sunday Jan 31.
+  Program Constraint 9 requires the Sunday to be no earlier than the last Sunday
+  in January (Jan 31, 2027) and scheduled as soon as scheduling allows, which
+  supersedes the older §7 "Sat/Sun after Valentine's Day" heuristic.
 - **Blue & Gold Banquet / AOL crossover**: Wed Feb 24, 2027 — placed **after**
-  the Pinewood Derby (Feb 20–21) so AOLs earn Race Time before crossover, per
-  the user's correction to the committee notes.
+  the Pinewood Derby so AOLs earn Race Time before crossover, and **≥ 3 weeks
+  after** it (Constraint 11: Feb 24 is 24 days after Jan 31).
+- **Fellowship Hall availability** (Constraint 10): the Pinewood Derby and Blue &
+  Gold dates must be nights FH is free per fumcgnv.org/calendar. That is an
+  external check the generator cannot perform, so both are on the Issues list.
 - **Committee Meetings**: last Thursday, 9pm Zoom. Nov moved back one week
   (Nov 19) and Dec back two weeks (Dec 17) to stay in-month in a week that has a
   Wednesday meeting.
@@ -68,7 +78,7 @@ Basis column shows the verification verdict (✓ confirmed / ⚠ unconfirmed) an
 | Camp Card Sale Kickoff | Sat Jan 30, 2027 | ✓ NFC IYOS 2026-2027 (sale Feb–Apr) |
 | Winter Campout (district) | Fri–Sun Feb 5–7, 2027 | ✓ NFC IYOS — Medieval Faire family camp, Camp Shands |
 | Scout Sunday | Sun Feb 7, 2027 | ✓ scouting.org + NFC IYOS |
-| Pinewood Derby (Pack) | Sat–Sun Feb 20–21, 2027 | Sat/Sun after Valentine's Day (Sun Feb 14) |
+| Pinewood Derby (Pack) | Sat–Sun Jan 30–31, 2027 | Constraint 9: Sunday no earlier than the last Sunday in January (Sun Jan 31), scheduled as soon as scheduling allows; ⚠ FH availability on the Issues list (Constraint 10) |
 | Five Rivers District Dinner | Wed Mar 3, 2027 | ✓ NFC IYOS (first week of Mar) |
 | District Pinewood Derby | Sat Apr 3, 2027 | ✓ NFC IYOS date, but ⚠ Five Rivers not explicitly named for Apr 3 (council PWD ✓ Apr 17). On the Issues list. |
 | Spring Campout | Fri–Sun Apr 23–25, 2027 | ✓ NFC IYOS Family Camp, Camp Shands ("BUC TUOCS" name dropped) |
@@ -110,8 +120,8 @@ Wolf 2, Bear 3, Webelos 4, AOL 5.
 
 The per-den, per-meeting agendas are a suggested plan, sequenced so outdoor/
 fitness adventures fall in the daylight windows and tool/cooking adventures use
-the Cabin / Fellowship Hall. Arrow of Light work is front-loaded into Oct–Jan so
-it finishes before the Feb 24 crossover. Adjust freely — these are recommendations.
+the Cabin / Fellowship Hall. Arrow of Light work is front-loaded into Oct–mid-Feb
+so it finishes before the Feb 24 crossover. Adjust freely — these are recommendations.
 
 ## How the generator handles verification
 - **Issues list.** Any special event carrying a `verify: '...'` note, plus the

@@ -42,9 +42,9 @@ const OFF_WEDNESDAYS = {
 // Wednesday classification.
 const PACK_MEETING_WED = ['2026-10-07', '2026-11-04', '2026-12-02', '2027-01-06', '2027-04-07'];
 const YEAR_END_PACK_WED = '2027-05-26';
-const BUILD_NIGHT_WED = ['2027-02-03', '2027-02-10', '2027-02-17']; // before Pinewood (Feb 20-21)
-const BLUE_GOLD_WED = '2027-02-24';   // after the Pinewood Derby, per spec
-const BACK_TO_PACK_WED = '2026-08-19';
+const BUILD_NIGHT_WED = ['2027-01-13', '2027-01-20', '2027-01-27']; // 3 build nights, the Wednesdays before the Pinewood Derby (Sun Jan 31)
+const BLUE_GOLD_WED = '2027-02-24';   // Pack Meeting >=3 weeks after the Pinewood Derby (Jan 31); constraints 9 & 11
+const BACK_TO_PACK_WED = '2026-08-12';  // first school-year Wednesday: the kickoff is the first meeting, none precede it (constraint 8)
 
 function classifyWednesday(dt) {
   const key = ymd(dt);
@@ -148,8 +148,10 @@ function buildSpecialEvents() {
       label: 'Winter Campout — Medieval Faire Family Camp, Camp Shands (Fri–Sun, Feb 5–7)', wrap: "The pack's district campout for the year." },  // verified: NFC IYOS 2026-2027
     { date: d(2027, 2, 7), kind: 'special',
       label: 'Scout Sunday' },  // verified: scouting.org + NFC IYOS 2026-2027
-    { date: d(2027, 2, 20), kind: 'special',
-      label: 'Pinewood Derby — Pack 127 (Sat–Sun, Feb 20–21)' },
+    { date: d(2027, 1, 30), kind: 'special',
+      label: 'Pinewood Derby — Pack 127 (Sat–Sun, Jan 30–31)',
+      wrap: 'Race on Sunday, Jan 31 — the earliest Sunday on or after the last Sunday in January, as soon as scheduling allows (constraint 9). Build Nights are the three preceding Wednesdays (Jan 13/20/27).',
+      verify: 'Confirm Fellowship Hall is free the weekend of Jan 30–31 at fumcgnv.org/calendar (constraint 10: FH is taken if the words "Fellowship Hall" appear on any event that weekend).' },
     { date: d(2027, 3, 3), kind: 'special',
       label: 'Five Rivers District Dinner / Banquet (Wed)' },  // verified: NFC IYOS 2026-2027
     { date: d(2027, 4, 3), kind: 'special',
@@ -182,6 +184,8 @@ function buildConfigIssues() {
   // & spring break, the Jan 6 return) were verified against the official ACPS
   // 26-27 calendar PDF and are no longer listed here. Parker SUN remains TBD.
   return [
+    { date: d(2027, 2, 24), label: 'Blue & Gold Banquet (Feb 24) — Fellowship Hall availability',
+      note: 'The date itself is rule-derived (a Pack Meeting >=3 weeks after the Pinewood Derby), but confirm FH is free that Wednesday at fumcgnv.org/calendar (constraint 10).' },
     { date: d(2026, 10, 23), label: 'Five Rivers Spookoree family camp (~Oct 23–25) — the pack SKIPS this',
       note: 'Confirm the exact Five Rivers/Marion/Bartram Trail Spookoree dates; the pack skips it (Lubee Bat Festival weekend), so it is not a pack calendar event.' },
     { date: null, label: 'Parker Sign-Up Night',
@@ -333,7 +337,7 @@ const DEN_PLANS = {
     ['Year-end games & prep for Arrow of Light', 'field games; awards prep', 'Roper Park (Playground)', 5],
   ],
   // Arrow of Light finishes before the Blue & Gold crossover (Feb 24, 2027) —
-  // 9 den meetings (Oct–Jan).
+  // 9 den meetings (Oct–mid-Feb).
   'Arrow of Light': [
     ['Personal Fitness', 'fitness testing & active games', 'Roper Park (Playground)', 2],
     ['Outdoor Adventurer', 'outdoor skills & Fall Campout prep', 'Roper Park (Playground)', 1],
@@ -374,7 +378,7 @@ function buildProgramBlocks(denMeetingDates) {
     'Roper Park (the playground) has daylight at 6pm only before the clocks fall back (Sun Nov 1, 2026) and again after they spring forward (Sun Mar 14, 2027). Outdoor/fitness adventures are scheduled in those windows; winter meetings move indoors.',
     'Anything with tools (Baloo the Builder, Whittling) works best in the Cabin; anything with cooking/food (Chef’s Knife, Tiger Bites) works best in Fellowship Hall (kitchen).',
     'Bear does Baloo the Builder and Whittling, with Whittling in the Spring. Webelos does Chef’s Knife in the Spring.',
-    'Arrow of Light earns two electives: Knife Safety (a den meeting) and Race Time (covered by the Pinewood Derby build nights and race in February).',
+    'Arrow of Light earns two electives: Knife Safety (a den meeting) and Race Time (covered by the Pinewood Derby build nights in January and the race on Jan 30–31).',
     'Arrow of Light finishes all required rank work before the Blue & Gold crossover (Feb 24, 2027), leaving a make-up night in the schedule.',
     'Troop Visits apply only to the Arrow of Light den and are arranged directly by the AOL Den Leader with local Scouts BSA troops (125, 84, 21) on their own timetable (not on the top calendar page).',
   ].forEach((t) => blocks.push(para([run('• ' + t)])));
@@ -391,8 +395,8 @@ function buildProgramBlocks(denMeetingDates) {
 
   blocks.push(heading('August–September: pack-wide (Bobcat + electives)', 2));
   [
-    ['Aug 12', 'Welcome; introduce the Scout Oath & Law; active games', 'Roper Park (Playground)'],
-    ['Aug 19', 'Back to the Pack kickoff; pack-wide games & welcome', 'Roper Park (Playground)'],
+    ['Aug 12', 'Back to the Pack kickoff (first meeting of the year); pack-wide games & welcome', 'Roper Park (Playground)'],
+    ['Aug 19', 'Welcome; introduce the Scout Oath & Law; active games', 'Roper Park (Playground)'],
     ['Aug 26', 'Bobcat: sign, salute, handshake, motto, slogan (Littlewood SUN tonight)', 'Roper Park (Playground)'],
     ['Sep 2', 'Bobcat: Cub Scout Six Essentials & buddy system; nature walk', 'Roper Park (Playground)'],
     ['Sep 9', 'Bobcat: personal safety / Protect Yourself Rules (PK Yonge SUN tonight)', 'The Chapel'],
@@ -408,8 +412,8 @@ function buildProgramBlocks(denMeetingDates) {
     blocks.push(heading(`${den.rank} Den (${den.grade})`, 2));
     if (den.crossesOver) {
       blocks.push(para([run(
-        'Crosses over to Scouts BSA at the Blue & Gold Banquet (Feb 24, 2027), so all required work is front-loaded into Oct–Jan. '
-        + 'Race Time (2nd elective) is earned through the Pinewood Derby build nights (Feb 3/10/17) and race (Feb 20–21).'
+        'Crosses over to Scouts BSA at the Blue & Gold Banquet (Feb 24, 2027), so all required work is front-loaded into Oct–mid-Feb. '
+        + 'Race Time (2nd elective) is earned through the Pinewood Derby build nights (Jan 13/20/27) and race (Jan 30–31).'
       )]));
     }
     for (const r of rows) {
