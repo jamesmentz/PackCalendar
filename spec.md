@@ -91,6 +91,8 @@ inputs have been refreshed and the dates below re-confirmed against them:
   each with what to verify and where. Dates that are computed from a rule (every
   Wednesday meeting, the last-Thursday committee meetings, the campout weekend,
   the Pinewood Derby weekend) are known-correct and do not belong on this list.
+  -Substitute the word encouraged for the word mandatory
+
 
 ## Event Types
 There are four kinds of events:
@@ -234,7 +236,7 @@ the relevant ones into the calendar; verify dates against
   23-25, 2026 (skip — Bat Festival weekend; **confirm the exact Five Rivers
   Spookoree dates**); Medieval Faire Feb 5-7, 2027; Family Camp (Shands) Apr
   23-25, 2027.
-- **BALOO (adult training):** Nov 7-8, 2026 and May 7-8, 2027.
+- **BALOO (adult training):** Nov 13-14, 2026 and May 7-8, 2027.
 - **Cub Winter Wonderland:** December 11-13, 2026.
 - **Scout Sunday:** February 7, 2027.
 - **District Dinner/Banquet:** February-March 2027 (Five Rivers District Dinner
