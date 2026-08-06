@@ -5,8 +5,18 @@ also drive the CI regeneration job (`.github/workflows/regenerate-calendar.yml`)
 
 ## What this repo is
 
-It generates the **Cub Scout Pack 127** annual calendar as a Word document
-(`YYYY-YYYY Pack 127 Calendar.docx`) for a school year and the following summer.
+It generates two Word documents for **Cub Scout Pack 127**, via two independent
+pipelines with two different triggers:
+
+| Trigger (source) | Generator | Output |
+|---|---|---|
+| `spec.md` — how to *build* the calendar (prose) | `generator/generate.js` | `YYYY-YYYY Pack 127 Calendar.docx` |
+| `calendar.md` — the calendar already *built & published* | `generator/generate-program-plan.js` | `Program_Plan.docx` |
+
+The calendar covers a school year and the following summer. The program plan
+lays the per-den program recommendations over the real dates in `calendar.md`.
+The two regeneration contracts are below — do not cross the wires: a `spec.md`
+edit rebuilds the calendar; a `calendar.md` edit rebuilds the program plan.
 
 ## Source of truth
 
@@ -54,20 +64,50 @@ When `spec.md` changes:
 In CI, committing/pushing is handled by a dedicated workflow step — the agent
 should only edit files and run the generator, not run git.
 
+## Program-plan regeneration contract (trigger: `calendar.md`)
+
+`calendar.md` is the **actual published calendar** — a calendar that has already
+been built (by the `spec.md` pipeline or by hand) and distributed. It is the
+source of truth for the **program plan**, and unlike `spec.md` it is structured
+enough that a script parses it directly.
+
+When `calendar.md` changes:
+
+1. Read `calendar.md` in full and read `generator/generate-program-plan.js`.
+2. The generator parses the den-meeting Wednesdays and the Blue & Gold /
+   Arrow-of-Light crossover date straight out of `calendar.md`, then lays the
+   per-den adventure blocks (`DEN_PLANS`) over those dates. The dates are always
+   correct to the committed calendar; what needs reconciling is the program
+   *content*. If the calendar changes shape — a different number of den meetings,
+   a different fall/indoor/spring daylight split, or a different crossover — the
+   `SHAPE` assertion fails on purpose. Re-tune `SHAPE` and the `DEN_PLANS` block
+   counts so each den's blocks fill exactly its meeting dates, outdoor work stays
+   in the daylight windows, and the spring-only adventures (Bear Whittling,
+   Webelos Chef's Knife) stay in the spring.
+3. **Do not modify `generator/docx.js` or `generator/generate.js`** — the program
+   plan is a separate pipeline. Edit only `generator/generate-program-plan.js`
+   (and `generator/lib.js` only if a change genuinely needs new shared logic).
+4. Run `node generator/generate-program-plan.js` to rebuild `Program_Plan.docx`.
+5. Be faithful to the program rules in `spec.md`; do not invent dates
+   `calendar.md` does not contain.
+
 ## Files
 
 | File | Purpose |
 |---|---|
-| `spec.md` | Source of truth (prose). Edit this to change the calendar. |
-| `generator/generate.js` | Schedule data + logic; entry point (`node generator/generate.js`). |
-| `generator/lib.js` | Date helpers and the two-column calendar renderer. |
-| `generator/docx.js` | Minimal OOXML → `.docx` writer. **Stable — do not edit for spec changes.** |
+| `spec.md` | Source of truth for the **calendar** (prose). Edit to change the calendar. |
+| `calendar.md` | The actual published calendar; source of truth for the **program plan**. |
+| `generator/generate.js` | Calendar schedule data + logic; entry point (`node generator/generate.js`). |
+| `generator/generate-program-plan.js` | Parses `calendar.md` → `Program_Plan.docx`; entry point (`node generator/generate-program-plan.js`). |
+| `generator/lib.js` | Date helpers and the two-column calendar renderer (shared). |
+| `generator/docx.js` | Minimal OOXML → `.docx` writer (shared). **Stable — do not edit for spec/calendar changes.** |
 | `generator/DATA_SOURCES.md` | Where each date/fact came from; items to verify. |
 
 ## Running locally
 
 ```
-node generator/generate.js
+node generator/generate.js               # calendar    (from generate.js data / spec.md)
+node generator/generate-program-plan.js  # program plan (parses calendar.md)
 ```
 
 Node core only — no npm packages and no external tools. `docx.js` writes the

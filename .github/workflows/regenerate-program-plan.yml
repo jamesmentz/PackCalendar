@@ -1,0 +1,67 @@
+name: Regenerate Program Plan
+on:
+  push:
+    paths:
+      - 'calendar.md'
+  workflow_dispatch:
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      # calendar.md is the ACTUAL published calendar (a different trigger and a
+      # different output from spec.md -> generate.js). generate-program-plan.js
+      # parses the meeting dates out of calendar.md deterministically, but the
+      # per-den adventure blocks (DEN_PLANS) are tuned to the calendar's shape.
+      # If the calendar changes shape, the generator fails a shape assertion, so
+      # run Claude Code headlessly to reconcile the program blocks first, then
+      # the generator rebuilds Program_Plan.docx.
+      - name: Sync program plan to calendar.md and regenerate
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          claude -p "$(cat <<'EOF'
+          calendar.md is the actual published Pack 127 calendar and it has just
+          changed. Regenerate the program plan so it matches the real schedule:
+
+          1. Read calendar.md in full and read generator/generate-program-plan.js.
+          2. generate-program-plan.js parses the den-meeting dates and the Blue &
+             Gold / crossover date out of calendar.md, then lays the per-den
+             program recommendations (DEN_PLANS) over those dates. If the calendar
+             changed shape (a different number of den meetings, or a different
+             fall/indoor/spring daylight split, or a different crossover), the
+             SHAPE assertion and the DEN_PLANS block counts must be re-tuned so
+             each den's blocks fill exactly its meeting dates, outdoor work stays
+             in the daylight windows, and the spring-only adventures (Bear
+             Whittling, Webelos Chef's Knife) stay in the spring. Do NOT modify
+             generator/docx.js or generator/generate.js — only generate-program-plan.js
+             (and generator/lib.js only if strictly necessary).
+          3. Run 'node generator/generate-program-plan.js' to rebuild Program_Plan.docx.
+          4. Do NOT run git add/commit/push and do NOT open a pull request; a
+             later workflow step commits the result. Just leave the edited source
+             and the regenerated Program_Plan.docx in the working tree.
+
+          Be faithful to the program rules in spec.md and to CLAUDE.md; do not
+          invent dates calendar.md does not contain.
+          EOF
+          )" --permission-mode bypassPermissions --model opus --max-turns 40
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --quiet --cached || git commit -m "Auto-regenerate program plan from calendar.md"
+          git push
