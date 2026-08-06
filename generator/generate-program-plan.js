@@ -340,7 +340,7 @@ function buildBlocks(sched) {
   [
     'Dates and meeting types are read directly from the published calendar.md; verification of externally-scheduled dates is tracked in that calendar’s "Issues — Unverified Dates" list, not repeated here.',
     'A few required-adventure names vary across sources (e.g., Wolf/Bear "Safe and Smart" vs "Safety in Numbers", Bear "Standing Tall"). Confirm against the current official rank pages.',
-    'Back to the Pack (the August kickoff) and other August/September details are TBA — confirm before publishing.',
+    'Back to the Pack (the August kickoff) is already scheduled on the published calendar, with its date and venue; the pack-wide Bobcat meetings above run on the August–September Wednesdays that follow it.',
     'These recommendations are encouraged, not required — den leaders may reorder adventures to fit their scouts, as long as tool/cooking work stays in the Cabin/kitchen and outdoor work stays in the daylight windows.',
   ].forEach((t) => blocks.push(para([run('• ' + t)])));
 
